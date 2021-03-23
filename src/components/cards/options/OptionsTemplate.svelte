@@ -2,10 +2,10 @@
   import { layouts } from '../../../stores/layoutsStore';
   import Icon from '../../Icon.svelte';
 
-  export let cardId, cardName;
+  export let cardId, cardName, flipCard;
 
   const handleDoneClick = () => {
-    layouts.flipCard(cardId, 'front');
+    flipCard(cardId);
   };
 
   const handleRemoveClick = () => {

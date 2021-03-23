@@ -7,22 +7,38 @@
   const colors = [
     'black',
     'white',
-    'blue-600',
-    'green-600',
-    'red-600',
-    'yellow-400',
+    'blue',
+    'green',
+    'red',
+    'yellow',
   ];
 </script>
 
-<div class="flex items-center space-x-3">
+<div class="color-picker">
   {#each colors as color}
     <button
       on:click={() => handleColorClick(color)}
-      class={`w-6 h-6 border border-gray-400 bg-${color} ${
-        selectedColor === color
-          ? 'rounded-full'
-          : 'rounded-sm'
-      }`}
+      class="color-picker__color"
+      class:color-picker__color--selected={color ===
+        selectedColor}
+      style="--color: {color}"
     />
   {/each}
 </div>
+
+<style>
+  .color-picker {
+    display: flex;
+    align-items: center;
+  }
+  .color-picker__color {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid grey;
+    background: var(--color);
+    border-radius: 5px;
+  }
+  .color-picker__color--selected {
+    border-radius: 100%;
+  }
+</style>

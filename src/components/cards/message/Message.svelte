@@ -1,5 +1,5 @@
 <script>
-  export let cardStore;
+  export let cardStore, cardId;
 
   $: font = $cardStore.font;
   $: fontSize = $cardStore.fontSize;

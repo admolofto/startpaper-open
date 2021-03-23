@@ -33,14 +33,29 @@
   };
 
   let flippedCardId = '';
-  const setFlippedCardId = (cardId) => {
-    flippedCardId = cardId;
+
+  const flipCard = (cardId, side = 'front') => {
+    if (side === 'front') {
+      layouts.changeZIndex(cardId, '10');
+      layouts.setCardLock(cardId, true);
+      flippedCardId = '';
+    } else {
+      layouts.changeZIndex(cardId, '100');
+      layouts.setCardLock(cardId, false);
+      flippedCardId = cardId;
+    }
+  };
+
+  const handleOutsideClick = () => {
+    flipCard(flippedCardId);
   };
 </script>
 
-{#if flippedCardId !== ''}
-  <DetectOutsideClick />
-{/if}
+<DetectOutsideClick
+  on:click={handleOutsideClick}
+  showOutsideArea={true}
+  renderOutsideArea={flippedCardId !== ''}
+/>
 
 <div class="grid">
   {#if !isLocked}
@@ -59,7 +74,8 @@
         cardId={dataItem.id}
         cardName={dataItem.name}
         {editmode}
-        {setFlippedCardId}
+        {flippedCardId}
+        {flipCard}
       />
     </Grid>
   {:else}

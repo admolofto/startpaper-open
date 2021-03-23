@@ -1,11 +1,18 @@
 <script>
-  export let handleOutsideClick = () => {};
+  import { fade } from 'svelte/transition';
+
+  export let renderOutsideArea,
+    showOutsideArea = false;
 </script>
 
-<div
-  class="dropdown__outside"
-  on:click={handleOutsideClick}
-/>
+{#if renderOutsideArea}
+  <div
+    class="dropdown__outside"
+    class:outside-area--show={showOutsideArea}
+    transition:fade
+    on:click
+  />
+{/if}
 
 <style>
   .dropdown__outside {
@@ -16,6 +23,8 @@
     width: 100vw;
     height: 100vh;
     cursor: default;
+  }
+  .outside-area--show {
     background: rgba(100, 100, 100, 0.5);
   }
 </style>

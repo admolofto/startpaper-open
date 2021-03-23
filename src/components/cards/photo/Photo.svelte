@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
 
-  export let cardStore;
+  export let cardStore, cardId;
 
   const img = new Image();
   let imgRatio;
@@ -125,6 +125,7 @@
   }
   .photo__image {
     height: 100%;
+    width: 100%;
     object-fit: cover;
     border-radius: 10px;
     object-position: var(--objPos);

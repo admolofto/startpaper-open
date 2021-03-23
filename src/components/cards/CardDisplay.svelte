@@ -4,14 +4,16 @@
   export let isDragging,
     editmode,
     cardId,
-    isFlipped,
-    setIsFlipped;
+    flippedCardId,
+    flipCard;
 
   const handleFlipClick = () => {
     if (!isDragging) {
-      setIsFlipped(true);
+      flipCard(cardId, 'back');
     }
   };
+
+  $: isFlipped = flippedCardId === cardId;
 </script>
 
 <div

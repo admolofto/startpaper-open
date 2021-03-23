@@ -17,6 +17,12 @@
   }
 </script>
 
-<div class="w-40">
+<div class="font-size-picker">
   <RangeSlider bind:values step={1} max={3} />
 </div>
+
+<style>
+  .font-size-picker {
+    width: 8rem;
+  }
+</style>

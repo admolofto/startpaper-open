@@ -2,7 +2,7 @@
   import marked from 'marked';
   import CardTemplate from '../CardTemplate.svelte';
 
-  export let cardStore;
+  export let cardStore, cardId;
 
   let textareaElement = null;
   let value = $cardStore.contents;

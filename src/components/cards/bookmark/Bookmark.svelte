@@ -1,5 +1,5 @@
 <script>
-  export let cardStore;
+  export let cardStore, cardId;
 
   $: withHttp = (testUrl) =>
     !/^https?:\/\//i.test(testUrl)
