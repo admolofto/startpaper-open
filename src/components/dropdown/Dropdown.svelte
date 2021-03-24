@@ -1,4 +1,6 @@
 <script>
+  import DetectOutsideClick from '../../utils/DetectOutsideClick.svelte';
+
   import DropdownItem from './DropdownItem.svelte';
 
   export let showDropdown = true,
@@ -17,8 +19,8 @@
 </script>
 
 {#if showDropdown}
-  <div
-    class="dropdown__outside"
+  <DetectOutsideClick
+    renderOutsideArea={showDropdown}
     on:click={handleOutsideClick}
   />
 
