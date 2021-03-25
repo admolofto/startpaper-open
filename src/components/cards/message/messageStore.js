@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
-export const createMessageStore = (cardID) => {
-  const initValue = {
+export const createMessageStore = (cardId) => {
+  const initialValue = {
     isCustomMessage: false,
     customMessage: 'Good Evening',
     font: 'serif',
@@ -12,13 +12,13 @@ export const createMessageStore = (cardID) => {
   };
 
   const { subscribe, set, update } = writable(
-    JSON.parse(localStorage.getItem(`message_${cardID}`)) ||
-      initValue
+    JSON.parse(localStorage.getItem(`message_${cardId}`)) ||
+      initialValue
   );
 
   subscribe((value) => {
     localStorage.setItem(
-      `message_${cardID}`,
+      `message_${cardId}`,
       JSON.stringify(value)
     );
   });

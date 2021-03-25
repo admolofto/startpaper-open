@@ -1,11 +1,23 @@
 import { writable } from 'svelte/store';
 
-export const createNoteStore = () => {
-  const { subscribe, set, update } = writable({
+export const createNoteStore = (cardId) => {
+  const initialValue = {
     contents: 'Write *anything*...',
     font: 'serif',
     fontColor: 'black',
     fontSize: 'large',
+  };
+
+  const { subscribe, set, update } = writable(
+    JSON.parse(localStorage.getItem(`note_${cardId}`)) ||
+      initialValue
+  );
+
+  subscribe((value) => {
+    localStorage.setItem(
+      `note_${cardId}`,
+      JSON.stringify(value)
+    );
   });
 
   const setContents = (newContent) => {

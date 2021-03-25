@@ -10,9 +10,15 @@ import { createNoteStore } from '../components/cards/note/noteStore';
 import Photo from '../components/cards/photo/Photo.svelte';
 import PhotoOpts from '../components/cards/photo/PhotoOpts.svelte';
 import { createPhotoStore } from '../components/cards/photo/photoStore';
+import Poster from '../components/cards/poster/Poster.svelte';
+import PosterOpts from '../components/cards/poster/PosterOpts.svelte';
+import { createPosterStore } from '../components/cards/poster/posterStore';
 import Stock from '../components/cards/stock/Stock.svelte';
 import StockOpts from '../components/cards/stock/StockOpts.svelte';
-import { createStockStore } from '../components/cards/stock/StockStore';
+import { createStockStore } from '../components/cards/stock/stockStore';
+import TradingView from '../components/cards/tradingview/TradingView.svelte';
+import TradingViewOpts from '../components/cards/tradingview/TradingViewOpts.svelte';
+import { createTradingViewStore } from '../components/cards/tradingview/tradingViewStore';
 
 export const cardLibrary = [
   {
@@ -70,5 +76,27 @@ export const cardLibrary = [
     max: { h: 1, w: 2 },
     min: { h: 1, w: 2 },
     canResize: false,
+  },
+  {
+    name: 'TradingView',
+    cardFront: TradingView,
+    cardOpts: TradingViewOpts,
+    createCardStore: createTradingViewStore,
+    initW: 2,
+    initH: 4,
+    max: { h: 8, w: 6 },
+    min: { h: 4, w: 2 },
+    canResize: true,
+  },
+  {
+    name: 'Poster',
+    cardFront: Poster,
+    cardOpts: PosterOpts,
+    createCardStore: createPosterStore,
+    initW: 2,
+    initH: 4,
+    max: { h: 8, w: 6 },
+    min: { h: 4, w: 2 },
+    canResize: true,
   },
 ];

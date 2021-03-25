@@ -4,7 +4,7 @@ import { initialLayouts } from '../data/initialLayouts';
 import { activePage } from './activePageStore';
 
 const { subscribe, set, update } = writable(
-  JSON.parse(localStorage.getItem('layoutsStore')) ||
+  JSON.parse(localStorage.getItem('layouts')) ||
     initialLayouts
 );
 
@@ -98,6 +98,55 @@ const setCardLock = (cardId, bool) => {
   });
 };
 
+const addCard = (card) => {
+  update((prev) => {
+    let newCard = {
+      id: generateCardId(),
+      [cols]: item({
+        x: 0,
+        y: 0,
+        w: card.initW,
+        h: card.initH,
+        min: card.min,
+        max: card.max,
+        draggable: true,
+        resizable: card.canResize,
+      }),
+      name: card.name,
+      canResize: card.canResize,
+    };
+
+    let findOutPosition = gridHelp.findSpace(
+      newCard,
+      prev[activePageValue],
+      cols
+    );
+
+    newCard = {
+      ...newCard,
+      [cols]: { ...newCard[cols], ...findOutPosition },
+    };
+
+    let cards = prev[activePageValue];
+    cards = [...cards, newCard];
+    // Do I need this?
+    //cards = gridHelp.normalize(cards, cols)
+    prev[activePageValue] = cards;
+    console.log(prev);
+    return prev;
+  });
+};
+
+const removeCard = (cardID) => {
+  update((prev) => {
+    let layout = prev[activePageValue].filter(
+      (value) => value.id !== cardID
+    );
+    prev[activePageValue] = layout;
+    return prev;
+  });
+};
+
 export const layouts = {
   subscribe,
   updateLayout,
@@ -105,4 +154,6 @@ export const layouts = {
   toggleEditmode,
   changeZIndex,
   setCardLock,
+  addCard,
+  removeCard,
 };

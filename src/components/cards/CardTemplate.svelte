@@ -1,4 +1,12 @@
-<div class="card-template" on:mousedown>
+<script>
+  export let padding = '1rem';
+</script>
+
+<div
+  class="card-template"
+  style="--padding: {padding}"
+  on:mousedown
+>
   <slot />
 </div>
 
@@ -6,7 +14,7 @@
   .card-template {
     width: 100%;
     height: 100%;
-    padding: 1rem;
+    padding: var(--padding);
     background: white;
     border-radius: 10px;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),

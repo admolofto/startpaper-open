@@ -34,6 +34,7 @@
         isActive={editmode}
         icon="pencil"
         activeIcon="check"
+        opacity={true}
       />
     </div>
   </div>

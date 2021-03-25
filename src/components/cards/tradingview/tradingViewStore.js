@@ -1,19 +1,20 @@
 import { writable } from 'svelte/store';
 
-export const createStockStore = (cardId) => {
+export const createTradingViewStore = (cardId) => {
   const initialValue = {
     symbol: 'CRSR',
     logo: 'https://logo.clearbit.com/corsair.com',
   };
 
   const { subscribe, set, update } = writable(
-    JSON.parse(localStorage.getItem(`stock_${cardId}`)) ||
-      initialValue
+    JSON.parse(
+      localStorage.getItem(`tradingView_${cardId}`)
+    ) || initialValue
   );
 
   subscribe((value) => {
     localStorage.setItem(
-      `stock_${cardId}`,
+      `tradingView_${cardId}`,
       JSON.stringify(value)
     );
   });

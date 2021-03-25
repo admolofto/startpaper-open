@@ -187,19 +187,22 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
     display: flex;
   }
   .stock__quote {
     display: flex;
     align-items: center;
+    justify-content: center;
+    margin-right: 0.5rem;
   }
   .stock__quote--company-symbol {
     font-size: large;
     font-weight: 500;
   }
   .stock__quote--company-logo {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
     border-radius: 5px;
     margin-left: 0.5rem;
   }
@@ -217,8 +220,9 @@
     flex-direction: column;
   }
   .stock__chart--canvas {
-    height: 3rem;
-    width: 6rem;
+    margin: 0.2rem 0;
+    height: 2.5rem;
+    width: 100%;
   }
   .stock__chart--change {
     font-size: small;

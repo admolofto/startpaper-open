@@ -27,11 +27,9 @@
   <InputColorPicker bind:selectedColor />
 </OptionsSection>
 <OptionsSection header="Font size">
-  <p class="text-sm">Aa</p>
   <InputFontSizePicker
     bind:selectedFontSize
     {fontSizes}
     defaultValue={fontIndex}
   />
-  <p class="text-lg">Aa</p>
 </OptionsSection>

@@ -6,16 +6,17 @@
 </script>
 
 {#if renderOutsideArea}
-  <div
-    class="dropdown__outside"
-    class:outside-area--show={showOutsideArea}
-    transition:fade
-    on:click
-  />
+  <div class="detect-outside" on:click />
+  {#if showOutsideArea}
+    <div
+      class="detect-outside detect-outside__show-area"
+      transition:fade={{ duration: 200 }}
+    />
+  {/if}
 {/if}
 
 <style>
-  .dropdown__outside {
+  .detect-outside {
     position: fixed;
     z-index: 99;
     top: 0;
@@ -24,7 +25,8 @@
     height: 100vh;
     cursor: default;
   }
-  .outside-area--show {
+  .detect-outside__show-area {
+    z-index: 98;
     background: rgba(100, 100, 100, 0.5);
   }
 </style>

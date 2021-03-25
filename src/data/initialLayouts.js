@@ -7,7 +7,7 @@ export const initialLayouts = {
     {
       id: 'c03',
       6: item({
-        x: 1,
+        x: 2,
         y: 1,
         w: 1,
         h: 1,
@@ -16,12 +16,24 @@ export const initialLayouts = {
       }),
       name: 'Bookmark',
       canResize: false,
-      flipped: false,
+    },
+    {
+      id: 'c12',
+      6: item({
+        x: 1,
+        y: 0,
+        w: 1,
+        h: 2,
+        resizable: true,
+        draggable: false,
+      }),
+      name: 'Poster',
+      canResize: false,
     },
     {
       id: 'c12234',
       6: item({
-        x: 2,
+        x: 3,
         y: 1,
         w: 2,
         h: 1,
@@ -30,7 +42,6 @@ export const initialLayouts = {
       }),
       name: 'Stock',
       canResize: false,
-      flipped: false,
     },
     {
       id: 'c00',
@@ -44,7 +55,6 @@ export const initialLayouts = {
       }),
       name: 'Message',
       canResize: true,
-      flipped: false,
     },
     {
       id: 'c01',
@@ -58,7 +68,6 @@ export const initialLayouts = {
       }),
       name: 'Photo',
       canResize: true,
-      flipped: false,
     },
     {
       id: 'c02',
@@ -72,7 +81,6 @@ export const initialLayouts = {
       }),
       name: 'Note',
       canResize: true,
-      flipped: false,
     },
   ],
   p01: [
@@ -88,7 +96,6 @@ export const initialLayouts = {
       }),
       name: 'Bookmark',
       canResize: false,
-      flipped: false,
     },
     {
       id: 'c04',
@@ -102,7 +109,6 @@ export const initialLayouts = {
       }),
       name: 'Message',
       canResize: true,
-      flipped: false,
     },
     {
       id: 'c05',
@@ -116,7 +122,6 @@ export const initialLayouts = {
       }),
       name: 'Photo',
       canResize: true,
-      flipped: false,
     },
     {
       id: 'c06',
@@ -130,7 +135,6 @@ export const initialLayouts = {
       }),
       name: 'Note',
       canResize: true,
-      flipped: true,
     },
   ],
 };

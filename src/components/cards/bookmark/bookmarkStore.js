@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 export const createBookmarkStore = (cardId) => {
-  const initValue = {
+  const initialValue = {
     url: 'svelte.dev',
     name: 'svelte',
   };
@@ -9,7 +9,7 @@ export const createBookmarkStore = (cardId) => {
   const { subscribe, set, update } = writable(
     JSON.parse(
       localStorage.getItem(`bookmark_${cardId}`)
-    ) || initValue
+    ) || initialValue
   );
 
   subscribe((value) => {

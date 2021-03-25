@@ -1,12 +1,14 @@
 <script>
   export let size = '30',
     color = 'black',
+    opacity = false,
     icon;
 </script>
 
 <svg
   xmlns="http://www.w3.org/2000/svg"
   class="icon"
+  class:icon--opacity={opacity}
   width={size}
   height={size}
   viewBox="0 0 24 24"
@@ -114,3 +116,12 @@
     <line x1="12" y1="11" x2="12" y2="14" />
   {/if}
 </svg>
+
+<style>
+  .icon--opacity {
+    opacity: 0.2;
+  }
+  .icon--opacity:hover {
+    opacity: 1;
+  }
+</style>

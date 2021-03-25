@@ -18,11 +18,25 @@
 </script>
 
 <div class="font-size-picker">
-  <RangeSlider bind:values step={1} max={3} />
+  <p class="font-size-picker__label-small">Aa</p>
+  <div class="font-size-picker__range-slider">
+    <RangeSlider bind:values step={1} max={3} />
+  </div>
+  <p class="font-size-picker__label-large">Aa</p>
 </div>
 
 <style>
   .font-size-picker {
+    display: flex;
+    align-items: center;
+  }
+  .font-size-picker__range-slider {
     width: 8rem;
+  }
+  .font-size-picker__label-small {
+    font-size: small;
+  }
+  .font-size-picker__label-large {
+    font-size: large;
   }
 </style>

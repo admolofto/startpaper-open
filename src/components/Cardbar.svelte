@@ -21,7 +21,7 @@
       easing: quintInOut,
     }}
   >
-    {#each cardLibrary as card}
+    {#each cardLibrary as card, cardIndex}
       <div class="cardbar__card">
         <button
           class="cardbar__card--button"
@@ -30,6 +30,7 @@
         <svelte:component
           this={card.cardFront}
           cardStore={card.createCardStore()}
+          cardId={cardIndex}
         />
         <h1 class="cardbar__card--name">{card.name}</h1>
       </div>

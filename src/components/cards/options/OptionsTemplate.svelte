@@ -9,6 +9,7 @@
   };
 
   const handleRemoveClick = () => {
+    flipCard(cardId);
     layouts.removeCard(cardId);
   };
 </script>
@@ -19,7 +20,7 @@
       {cardName}
     </h1>
     <button on:click={handleRemoveClick}>
-      <Icon icon="trashcan" />
+      <Icon icon="trashcan" size="25" color="red" />
     </button>
   </div>
 

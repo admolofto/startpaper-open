@@ -3,6 +3,7 @@
   export let isActive = false,
     size = '30',
     icon,
+    opacity = false,
     activeIcon = '',
     style = {
       hoverBackground: 'rgba(220, 230, 230, 1)',
@@ -16,7 +17,7 @@
   on:click
 >
   {#if !isActive}
-    <Icon {icon} {size} />
+    <Icon {icon} {size} {opacity} />
   {:else}
     <Icon icon={activeIcon} {size} />
   {/if}
