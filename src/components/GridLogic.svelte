@@ -33,16 +33,32 @@
   };
 
   let flippedCardId = '';
+  let optionsFlip = false;
+  let optionsFlippedCardId = '';
 
-  const flipCard = (cardId, side = 'front') => {
+  const flipCard = (
+    cardId,
+    side = 'front',
+    opts = { optionsFlip: false }
+  ) => {
+    console.log(opts);
     if (side === 'front') {
-      layouts.changeZIndex(cardId, '10');
-      layouts.setCardLock(cardId, true);
+      if (!opts.optionsFlip) {
+        layouts.changeZIndex(cardId, '10');
+        layouts.setCardLock(cardId, true);
+      } else {
+        optionsFlip = true;
+        optionsFlippedCardId = cardId;
+      }
       flippedCardId = '';
     } else {
-      layouts.changeZIndex(cardId, '100');
-      layouts.setCardLock(cardId, false);
+      if (!opts.optionsFlip) {
+        layouts.changeZIndex(cardId, '100');
+        layouts.setCardLock(cardId, false);
+      }
       flippedCardId = cardId;
+      optionsFlip = false;
+      optionsFlippedCardId = '';
     }
   };
 
@@ -54,7 +70,7 @@
 <DetectOutsideClick
   on:click={handleOutsideClick}
   showOutsideArea={true}
-  renderOutsideArea={flippedCardId !== ''}
+  renderOutsideArea={flippedCardId !== '' || optionsFlip}
 />
 
 <div class="grid">
@@ -76,6 +92,7 @@
         {editmode}
         {flippedCardId}
         {flipCard}
+        {optionsFlippedCardId}
       />
     </Grid>
   {:else}

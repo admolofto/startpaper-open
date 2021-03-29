@@ -1,11 +1,10 @@
 <script>
-  import { layouts } from '../../stores/layoutsStore';
-
   export let isDragging,
     editmode,
     cardId,
     flippedCardId,
-    flipCard;
+    flipCard,
+    optionsFlippedCardId;
 
   const handleFlipClick = () => {
     if (!isDragging) {
@@ -14,11 +13,13 @@
   };
 
   $: isFlipped = flippedCardId === cardId;
+  $: isOptionsFlipped = optionsFlippedCardId === cardId;
 </script>
 
 <div
   class="card-display"
-  class:card-display--flipped={isFlipped}
+  class:card-display--flipped={isFlipped ||
+    isOptionsFlipped}
   class:card-display--editmode={editmode}
 >
   <div
@@ -26,10 +27,12 @@
     class:card-display__inner--flipped={isFlipped}
   >
     {#if !isFlipped && editmode}
-      <button
-        on:click={handleFlipClick}
-        class="card-display__options-button"
-      />
+      {#if !isOptionsFlipped}
+        <button
+          on:click={handleFlipClick}
+          class="card-display__options-button"
+        />
+      {/if}
     {/if}
     <div
       class="card-display__card card-display__card-front"

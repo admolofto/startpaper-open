@@ -3,12 +3,13 @@
   import InputText from '../../inputs/InputText.svelte';
   import OptionsSection from '../options/OptionsSection.svelte';
 
-  export let cardStore;
+  export let cardStore, cardId, flipCard;
 
   let value = $cardStore.path;
 
   const handleRepositionClick = () => {
     cardStore.setIsRepositioning(true);
+    flipCard(cardId, 'front', { optionsFlip: true });
   };
 </script>
 

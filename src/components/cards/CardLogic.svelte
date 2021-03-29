@@ -8,7 +8,8 @@
     cardName,
     editmode,
     flippedCardId,
-    flipCard;
+    flipCard,
+    optionsFlippedCardId;
 
   const cardIndex = cardLibrary.findIndex(
     (item) => item.name === cardName
@@ -41,6 +42,7 @@
     {cardId}
     {flippedCardId}
     {flipCard}
+    {optionsFlippedCardId}
   >
     <div class="card-logic__slot">
       {#if !hideBack}
@@ -48,6 +50,7 @@
           this={cardFront}
           {cardStore}
           {cardId}
+          {flipCard}
         />
       {/if}
     </div>
@@ -56,6 +59,8 @@
         <svelte:component
           this={cardOpts}
           {cardStore}
+          {cardId}
+          {flipCard}
         /></OptionsTemplate
       >
     </div>

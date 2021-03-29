@@ -1,7 +1,16 @@
 <script>
-  import CardTemplate from '../CardTemplate.svelte';
+  import InputDraggablePhoto from '../../inputs/InputDraggablePhoto.svelte';
+
+  export let cardStore, cardId, flipCard;
 </script>
 
-<CardTemplate>
-  <h1>Poster</h1>
-</CardTemplate>
+<div class="poster">
+  <InputDraggablePhoto {cardStore} {cardId} {flipCard} />
+</div>
+
+<style>
+  .poster {
+    width: 100%;
+    height: 100%;
+  }
+</style>

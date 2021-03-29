@@ -22,7 +22,12 @@
     }}
   >
     {#each cardLibrary as card, cardIndex}
-      <div class="cardbar__card">
+      <div
+        class="cardbar__card"
+        style="height: {card.min.h === 1
+          ? '110px'
+          : `${card.min.h * 110}px`}"
+      >
         <button
           class="cardbar__card--button"
           on:click={() => handleCardClick(card)}
