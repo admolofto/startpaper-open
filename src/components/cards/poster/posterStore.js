@@ -4,10 +4,10 @@ export const createPosterStore = (cardId) => {
   const initialValue = {
     isRepositioning: false,
     objPos: { X: 50, Y: 50 },
-    movieName: 'Aniara',
-    movieYear: '2018',
-    path:
-      'https://i.ibb.co/BTnt3J5/aniara-9fbf-2500x4000.jpg',
+    movieTitle: '',
+    movieYear: '',
+    movieTmdbId: '',
+    path: '',
   };
 
   const { subscribe, set, update } = writable(
@@ -49,6 +49,33 @@ export const createPosterStore = (cardId) => {
     });
   };
 
+  const setMovieTitle = (newMovieTitle) => {
+    update((prev) => {
+      return {
+        ...prev,
+        movieTitle: newMovieTitle,
+      };
+    });
+  };
+
+  const setMovieYear = (newMovieYear) => {
+    update((prev) => {
+      return {
+        ...prev,
+        movieYear: newMovieYear,
+      };
+    });
+  };
+
+  const setMovieTmdbId = (newMovieTmdbId) => {
+    update((prev) => {
+      return {
+        ...prev,
+        movieTmdbId: newMovieTmdbId,
+      };
+    });
+  };
+
   return {
     subscribe,
     set,
@@ -56,5 +83,8 @@ export const createPosterStore = (cardId) => {
     setIsRepositioning,
     setObjPos,
     setPath,
+    setMovieTitle,
+    setMovieYear,
+    setMovieTmdbId,
   };
 };
