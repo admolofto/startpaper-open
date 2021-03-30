@@ -5,13 +5,13 @@
   export let cardStore, cardId, flipCard;
 
   let movieData = Promise.resolve([]);
-  let movieDetails = `${$cardStore.movieTitle}, ${$cardStore.movieYear}`;
-  let movieTmdId = $cardStore.movieTmdbId.toString();
+  $: movieDetails = `${$cardStore.movieTitle}, ${$cardStore.movieYear}`;
+  $: movieTmdId = $cardStore.movieTmdbId.toString();
 
   console.log($cardStore.movieTitle);
 
   let urlBaseImg = `https://image.tmdb.org/t/p/original`;
-  let urlTmdbMoviePage = `https://www.themoviedb.org/movie/${movieTmdId}`;
+  $: urlTmdbMoviePage = `https://www.themoviedb.org/movie/${movieTmdId}`;
   $: console.log(urlTmdbMoviePage);
 
   let genreId = '878';
@@ -27,10 +27,10 @@
   const updatePosterStore = async () => {
     movieData = await getMoviesFromTmdb();
     cardStore.setPath(
-      `${urlBaseImg}${movieData.results[7].poster_path}`
+      `${urlBaseImg}${movieData.results[10].poster_path}`
     );
-    cardStore.setMovieTmdbId(movieData.results[7].id);
-    cardStore.setMovieTitle(movieData.results[7].title);
+    cardStore.setMovieTmdbId(movieData.results[10].id);
+    cardStore.setMovieTitle(movieData.results[10].title);
     console.log(movieData);
   };
 
