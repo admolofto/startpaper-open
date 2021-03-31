@@ -20,6 +20,7 @@
   const cardStore = cardLibrary[cardIndex].createCardStore(
     cardId
   );
+  $: isCardFlipped = flippedCardId === cardId;
 
   let hideBack = false;
   // See if we need to add this. If so, need to fix photo reposition functionality.
@@ -51,6 +52,7 @@
           {cardStore}
           {cardId}
           {flipCard}
+          {isCardFlipped}
         />
       {/if}
     </div>

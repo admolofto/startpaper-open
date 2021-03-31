@@ -7,7 +7,7 @@ export const createPosterStore = (cardId) => {
     movieTitle: '',
     movieYear: '',
     movieTmdbId: '',
-    genreFilter: '',
+    genreFilter: { value: '00', label: 'All' },
     path: '',
   };
 

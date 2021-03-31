@@ -2,62 +2,57 @@
   import { onMount } from 'svelte';
   import InputDraggablePhoto from '../../inputs/InputDraggablePhoto.svelte';
 
-  export let cardStore, cardId, flipCard, isCardFlipped;
-
-  const apiKey = '6b0c4f66ce4c706a64911a6348ae8442';
+  export let cardStore, cardId, flipCard;
 
   $: filterValues = {
     genre: $cardStore.genreFilter.value,
   };
 
+  $: updatePosterStore(filterValues);
+
+  let movieData = Promise.resolve([]);
   $: movieDetails = `${$cardStore.movieTitle}, ${$cardStore.movieYear}`;
   $: movieTmdId = $cardStore.movieTmdbId.toString();
 
+  let urlBaseImg = `https://image.tmdb.org/t/p/original`;
   $: urlTmdbMoviePage = `https://www.themoviedb.org/movie/${movieTmdId}`;
 
-  $: mainTmdbUrl = createMainTmdbUrl(filterValues);
-  $: updatePosterStore(mainTmdbUrl);
+  let apiKey = '6b0c4f66ce4c706a64911a6348ae8442';
 
-  const createRandomNum = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
-
-  const createMainTmdbUrl = (filters) => {
-    let randomNum = createRandomNum(1, 5);
-    let pageQuery = `&page=${randomNum}`;
-    let genreFilterQuery =
-      filters.genre !== '00'
-        ? `&with_genres=${filters.genre}`
-        : '';
-    return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}${pageQuery}${genreFilterQuery}`;
-  };
-
-  const updatePosterStore = async (url) => {
+  const getMoviesFromTmdb = async (filters) => {
+    let url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${filters.genre}`;
     const response = await fetch(url);
     const data = await response.json();
+    return data;
+  };
 
-    const randomNum = createRandomNum(
-      0,
-      data.results.length
+  const updatePosterStore = async (filters) => {
+    movieData = await getMoviesFromTmdb(filters);
+    let randomNum = Math.floor(
+      Math.random() * movieData.results.length
     );
 
     cardStore.setPath(
-      `https://image.tmdb.org/t/p/original${data.results[randomNum].poster_path}`
+      `${urlBaseImg}${movieData.results[randomNum].poster_path}`
     );
-    cardStore.setMovieTmdbId(data.results[randomNum].id);
-    cardStore.setMovieTitle(data.results[randomNum].title);
+    cardStore.setMovieTmdbId(
+      movieData.results[randomNum].id
+    );
+    cardStore.setMovieTitle(
+      movieData.results[randomNum].title
+    );
     cardStore.setMovieYear(
-      data.results[randomNum].release_date.substring(0, 4)
+      movieData.results[randomNum].release_date.substring(
+        0,
+        4
+      )
     );
+    console.log(movieData);
   };
-
-  onMount(() => {
-    createMainTmdbUrl(filterValues);
-  });
 </script>
 
 <div class="poster">
-  <div class:poster--details-overlay={!isCardFlipped}>
+  <div class="poster--details-overlay">
     <a href={urlTmdbMoviePage}>
       <h1 class="poster--details-overlay--title-year">
         {movieDetails}

@@ -14,8 +14,6 @@
     (item) => item === selectedFontSize
   );
 
-  $: console.log(fontIndex);
-
   $: cardStore.setFontColor(selectedColor);
   $: cardStore.setFontSize(selectedFontSize);
 </script>

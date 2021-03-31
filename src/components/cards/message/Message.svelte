@@ -28,5 +28,6 @@
     font-size: var(--font-size);
     color: var(--font-color);
     font-family: var(--font);
+    line-height: 2.5rem;
   }
 </style>

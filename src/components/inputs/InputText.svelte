@@ -67,8 +67,8 @@
     max-width: 15rem;
   }
   .text-input__input {
-    height: 2rem;
-    padding: 0.25rem;
+    height: 2.5rem;
+    padding: 0.5rem;
     width: 100%;
     border-radius: 5px;
     border: 1px solid rgba(220, 230, 230, 1);
