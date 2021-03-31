@@ -17,6 +17,7 @@
 <style>
   .options-section {
     display: flex;
+    margin-bottom: 2rem;
   }
   .options-section--layout-x {
     align-items: center;
@@ -29,7 +30,7 @@
     font-weight: 600;
     color: darkslategray;
     margin-right: 0.25rem;
-    width: 4rem;
+    width: 5rem;
     margin-bottom: 0.25rem;
   }
 </style>

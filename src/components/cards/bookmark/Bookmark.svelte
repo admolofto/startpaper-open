@@ -44,6 +44,7 @@
     width: 3.5rem;
     height: 3.5rem;
     object-fit: cover;
+    border-radius: 10px;
   }
   .bookmark__title {
     text-align: center;

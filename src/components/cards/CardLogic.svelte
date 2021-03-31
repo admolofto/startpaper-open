@@ -2,7 +2,7 @@
   import CardDisplay from './CardDisplay.svelte';
   import { cardLibrary } from '../../data/cardLibrary';
   import DetectDrag from './DetectDrag.svelte';
-  import OptionsTemplate from './options/OptionsTemplate.svelte';
+  import OptionsTemplate from './OptionsTemplate.svelte';
 
   export let cardId,
     cardName,
@@ -22,17 +22,15 @@
   );
 
   let hideBack = false;
-  // Stop rendering card's front to resolve rendering issues when changing some settings.
-  // let hideBack = false;
-  // let hideBackInterval;
-  // $: if (flippedCardId !== '') {
-  //   hideBackInterval = setInterval(() => {
-  //     hideBack = true;
-  //   }, 150);
-  // } else {
-  //   hideBack = false;
-  //   clearInterval(hideBackInterval);
-  // }
+  let hideBackInterval;
+  $: if (flippedCardId === cardId) {
+    hideBackInterval = setInterval(() => {
+      hideBack = true;
+    }, 150);
+  } else {
+    hideBack = false;
+    clearInterval(hideBackInterval);
+  }
 </script>
 
 <DetectDrag let:isDragging>

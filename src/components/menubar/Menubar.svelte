@@ -32,7 +32,7 @@
       <MenubarButton
         on:click={handleEditmodeClick}
         isActive={editmode}
-        icon="pencil"
+        icon="startpaper"
         activeIcon="check"
         opacity={true}
       />

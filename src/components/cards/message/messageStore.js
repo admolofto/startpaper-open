@@ -6,7 +6,7 @@ export const createMessageStore = (cardId) => {
     customMessage: 'Good Evening',
     font: 'serif',
     fontColor: 'black',
-    fontSize: 'xx-large',
+    fontSize: '44px',
     backgroundImg:
       'https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2850&q=80',
   };

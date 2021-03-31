@@ -1,6 +1,6 @@
 <script>
   import InputText from '../../inputs/InputText.svelte';
-  import OptionsSection from '../options/OptionsSection.svelte';
+  import OptionsSection from '../OptionsSection.svelte';
 
   export let cardStore;
 

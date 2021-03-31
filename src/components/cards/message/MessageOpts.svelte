@@ -1,6 +1,6 @@
 <script>
   import InputColorPicker from '../../inputs/InputColorPicker.svelte';
-  import OptionsSection from '../options/OptionsSection.svelte';
+  import OptionsSection from '../OptionsSection.svelte';
   import InputFontSizePicker from '../../inputs/InputFontSizePicker.svelte';
 
   export let cardStore;
@@ -8,12 +8,7 @@
   let selectedColor = $cardStore.fontColor;
   let selectedFontSize = $cardStore.fontSize;
 
-  const fontSizes = [
-    'medium',
-    'large',
-    'x-large',
-    'xx-large',
-  ];
+  const fontSizes = ['32px', '36px', '40px', '44px'];
 
   let fontIndex = fontSizes.findIndex(
     (item) => item === selectedFontSize

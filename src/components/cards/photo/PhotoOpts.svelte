@@ -1,7 +1,7 @@
 <script>
   import Icon from '../../Icon.svelte';
   import InputText from '../../inputs/InputText.svelte';
-  import OptionsSection from '../options/OptionsSection.svelte';
+  import OptionsSection from '../OptionsSection.svelte';
 
   export let cardStore, cardId, flipCard;
 

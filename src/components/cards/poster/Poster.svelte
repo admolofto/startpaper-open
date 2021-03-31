@@ -8,11 +8,8 @@
   $: movieDetails = `${$cardStore.movieTitle}, ${$cardStore.movieYear}`;
   $: movieTmdId = $cardStore.movieTmdbId.toString();
 
-  console.log($cardStore.movieTitle);
-
   let urlBaseImg = `https://image.tmdb.org/t/p/original`;
   $: urlTmdbMoviePage = `https://www.themoviedb.org/movie/${movieTmdId}`;
-  $: console.log(urlTmdbMoviePage);
 
   let genreId = '878';
   let apiKey = '6b0c4f66ce4c706a64911a6348ae8442';
@@ -26,11 +23,25 @@
 
   const updatePosterStore = async () => {
     movieData = await getMoviesFromTmdb();
-    cardStore.setPath(
-      `${urlBaseImg}${movieData.results[10].poster_path}`
+    let randomNum = Math.floor(
+      Math.random() * movieData.results.length
     );
-    cardStore.setMovieTmdbId(movieData.results[10].id);
-    cardStore.setMovieTitle(movieData.results[10].title);
+
+    cardStore.setPath(
+      `${urlBaseImg}${movieData.results[randomNum].poster_path}`
+    );
+    cardStore.setMovieTmdbId(
+      movieData.results[randomNum].id
+    );
+    cardStore.setMovieTitle(
+      movieData.results[randomNum].title
+    );
+    cardStore.setMovieYear(
+      movieData.results[randomNum].release_date.substring(
+        0,
+        4
+      )
+    );
     console.log(movieData);
   };
 
@@ -52,7 +63,6 @@
 
 <style>
   .poster {
-    position: relative;
     width: 100%;
     height: 100%;
   }

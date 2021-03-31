@@ -85,7 +85,7 @@ export const cardLibrary = [
     initW: 2,
     initH: 4,
     max: { h: 8, w: 6 },
-    min: { h: 4, w: 2 },
+    min: { h: 2, w: 2 },
     canResize: true,
   },
   {
@@ -95,8 +95,8 @@ export const cardLibrary = [
     createCardStore: createPosterStore,
     initW: 2,
     initH: 4,
-    max: { h: 8, w: 6 },
-    min: { h: 4, w: 2 },
+    max: { h: 8, w: 4 },
+    min: { h: 2, w: 1 },
     canResize: true,
   },
 ];

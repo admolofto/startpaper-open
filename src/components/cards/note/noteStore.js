@@ -3,9 +3,9 @@ import { writable } from 'svelte/store';
 export const createNoteStore = (cardId) => {
   const initialValue = {
     contents: 'Write *anything*...',
-    font: 'serif',
+    font: 'sans-serif',
     fontColor: 'black',
-    fontSize: 'large',
+    fontSize: '18px',
   };
 
   const { subscribe, set, update } = writable(

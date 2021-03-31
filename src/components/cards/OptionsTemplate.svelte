@@ -1,6 +1,6 @@
 <script>
-  import { layouts } from '../../../stores/layoutsStore';
-  import Icon from '../../Icon.svelte';
+  import { layouts } from '../../stores/layoutsStore';
+  import Icon from '../Icon.svelte';
 
   export let cardId, cardName, flipCard;
 

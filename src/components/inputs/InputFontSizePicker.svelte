@@ -2,7 +2,7 @@
   import RangeSlider from 'svelte-range-slider-pips';
 
   export let selectedFontSize = '',
-    fontSizes = ['small', 'medium', 'large', 'x-large'],
+    fontSizes = ['14px', '18px', '22px', '26px'],
     defaultValue = 2;
   let values = [defaultValue];
 

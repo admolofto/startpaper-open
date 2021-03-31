@@ -32,11 +32,12 @@
     align-items: center;
   }
   .color-picker__color {
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
     border: 1px solid grey;
     background: var(--color);
     border-radius: 5px;
+    margin-right: 0.5rem;
   }
   .color-picker__color--selected {
     border-radius: 100%;
