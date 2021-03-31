@@ -41,7 +41,6 @@
     side = 'front',
     opts = { optionsFlip: false }
   ) => {
-    console.log(opts);
     if (side === 'front') {
       if (!opts.optionsFlip) {
         layouts.changeZIndex(cardId, '10');

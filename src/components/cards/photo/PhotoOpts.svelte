@@ -11,10 +11,14 @@
     cardStore.setIsRepositioning(true);
     flipCard(cardId, 'front', { optionsFlip: true });
   };
+
+  const handleOnBlur = () => {
+    cardStore.setPath(value);
+  };
 </script>
 
 <OptionsSection header="Link" layout="y">
-  <InputText bind:value />
+  <InputText bind:value on:blur={handleOnBlur} />
 </OptionsSection>
 <OptionsSection header="Reposition">
   <button on:click={handleRepositionClick}>

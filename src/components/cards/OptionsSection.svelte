@@ -18,6 +18,7 @@
   .options-section {
     display: flex;
     margin-bottom: 2rem;
+    width: 100%;
   }
   .options-section--layout-x {
     align-items: center;

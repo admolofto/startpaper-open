@@ -64,7 +64,7 @@
   .text-input {
     position: relative;
     width: 100%;
-    max-width: 10rem;
+    max-width: 15rem;
   }
   .text-input__input {
     height: 2rem;

@@ -30,19 +30,19 @@ export const initialLayouts = {
       name: 'Poster',
       canResize: false,
     },
-    {
-      id: 'c12234',
-      6: item({
-        x: 3,
-        y: 1,
-        w: 2,
-        h: 1,
-        resizable: false,
-        draggable: false,
-      }),
-      name: 'Stock',
-      canResize: false,
-    },
+    // {
+    //   id: 'c12234',
+    //   6: item({
+    //     x: 3,
+    //     y: 1,
+    //     w: 2,
+    //     h: 1,
+    //     resizable: false,
+    //     draggable: false,
+    //   }),
+    //   name: 'Stock',
+    //   canResize: false,
+    // },
     {
       id: 'c00',
       6: item({

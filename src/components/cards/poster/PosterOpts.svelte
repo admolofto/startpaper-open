@@ -5,7 +5,7 @@
 
   export let cardStore, cardId, flipCard;
 
-  let value = $cardStore.path;
+  let value = $cardStore.genreFilter;
 
   const handleRepositionClick = () => {
     cardStore.setIsRepositioning(true);

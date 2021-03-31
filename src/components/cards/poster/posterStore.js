@@ -7,6 +7,7 @@ export const createPosterStore = (cardId) => {
     movieTitle: '',
     movieYear: '',
     movieTmdbId: '',
+    genreFilter: '',
     path: '',
   };
 
@@ -27,6 +28,15 @@ export const createPosterStore = (cardId) => {
       return {
         ...prev,
         objPos: { ...prev.objPos, [axis]: newObjPos },
+      };
+    });
+  };
+
+  const setGenreFilter = (newGenreFilter) => {
+    update((prev) => {
+      return {
+        ...prev,
+        genreFilter: newGenreFilter,
       };
     });
   };
@@ -83,6 +93,7 @@ export const createPosterStore = (cardId) => {
     setIsRepositioning,
     setObjPos,
     setPath,
+    setGenreFilter,
     setMovieTitle,
     setMovieYear,
     setMovieTmdbId,

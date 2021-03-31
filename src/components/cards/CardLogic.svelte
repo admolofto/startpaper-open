@@ -22,15 +22,17 @@
   );
 
   let hideBack = false;
-  let hideBackInterval;
-  $: if (flippedCardId === cardId) {
-    hideBackInterval = setInterval(() => {
-      hideBack = true;
-    }, 150);
-  } else {
-    hideBack = false;
-    clearInterval(hideBackInterval);
-  }
+  // See if we need to add this. If so, need to fix photo reposition functionality.
+  // let hideBackInterval;
+  // $: if (flippedCardId === cardId) {
+  //   if (optionsFlippedCardId !== cardId)
+  //     hideBackInterval = setInterval(() => {
+  //       hideBack = true;
+  //     }, 150);
+  // } else {
+  //   hideBack = false;
+  //   clearInterval(hideBackInterval);
+  // }
 </script>
 
 <DetectDrag let:isDragging>
