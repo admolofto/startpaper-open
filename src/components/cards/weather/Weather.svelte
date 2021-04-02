@@ -6,18 +6,17 @@
 
   export let cardStore;
 
-  $: inputCity = $cardStore.city;
-  $: promise = fetchWeather(inputCity);
+  $: inputZipCode = $cardStore.zipCode || '11105';
+  $: promise = fetchWeather(inputZipCode);
 
-  const fetchWeather = async (city) => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const fetchWeather = async (zipCode) => {
+    let url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`;
     const response = await fetch(url);
     const jsonResponse = await response.json();
     console.log(jsonResponse);
     return {
       deg: toImperial(jsonResponse.main.temp),
       icon: jsonResponse.weather[0].icon,
-      main: jsonResponse.weather[0].main,
       location: jsonResponse.name,
       description: jsonResponse.weather[0].main,
     };

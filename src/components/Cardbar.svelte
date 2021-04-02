@@ -25,9 +25,15 @@
       <div class="cardbar__card--container">
         <div
           class="cardbar__card"
-          style="height: {card.min.h === 1
+          style="height: {card.preview.h === 1
             ? '110px'
-            : `${card.min.h * 110}px`}"
+            : `${
+                card.preview.h * 110
+              }px`};
+            width: {card.preview.w === 1
+            ? '193px'
+            : `${card.preview.w * 193}`}
+            "
         >
           <button
             class="cardbar__card--button"

@@ -17,7 +17,7 @@
 <style>
   .options-section {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     width: 100%;
   }
   .options-section--layout-x {

@@ -101,7 +101,7 @@
 
 <style>
   .grid {
-    padding-top: 3rem;
+    padding: 3rem 1rem 0 1rem;
   }
   :global(.svlt-grid-active) {
     opacity: 1 !important;

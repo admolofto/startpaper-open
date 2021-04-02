@@ -4,11 +4,10 @@ export const createWeatherStore = (cardId) => {
   const initialValue = {
     zipCode: '30047',
     weatherData: {
-      deg: '',
-      icon: '',
-      main: '',
-      location: '',
-      description: '',
+      deg: '58',
+      icon: '01d',
+      location: 'New York',
+      description: 'Clear',
     },
   };
 

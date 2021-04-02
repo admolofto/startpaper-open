@@ -1,4 +1,5 @@
 <script>
+  import Icon from '../../Icon.svelte';
   import InputColorPicker from '../../inputs/InputColorPicker.svelte';
   import InputFontSizePicker from '../../inputs/InputFontSizePicker.svelte';
   import OptionsSection from '../OptionsSection.svelte';
@@ -27,4 +28,11 @@
     {fontSizes}
     defaultValue={fontIndex}
   />
+</OptionsSection>
+<OptionsSection header="Syntax">
+  <a
+    href="https://www.markdownguide.org/basic-syntax/#headings"
+  >
+    <Icon icon="help" />
+  </a>
 </OptionsSection>

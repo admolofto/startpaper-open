@@ -22,6 +22,10 @@
   const handleBlur = () => {
     focus = false;
   };
+
+  const handleChange = () => {
+    cardStore.setContents(value);
+  };
 </script>
 
 <CardTemplate>
@@ -34,6 +38,7 @@
       <textarea
         class="note__textarea"
         bind:value
+        on:change={handleChange}
         on:blur={handleBlur}
         bind:this={textareaElement}
       />
@@ -50,6 +55,31 @@
     font-family: var(--font);
     color: var(--font-color);
     font-size: var(--font-size);
+  }
+  :global(.note h1) {
+    font-size: 120%;
+    font-weight: bold;
+  }
+  :global(.note h2) {
+    font-size: 110%;
+    font-weight: bold;
+  }
+  :global(.note h3) {
+    font-size: 100%;
+    font-weight: bold;
+  }
+  :global(.note blockquote) {
+    padding-left: 1rem;
+  }
+  :global(.note ol) {
+    list-style: decimal;
+    list-style-position: outside;
+    padding-left: 1rem;
+  }
+  :global(.note ul) {
+    list-style: disc;
+    list-style-position: outside;
+    padding-left: 1rem;
   }
   .note__textarea {
     width: 100%;

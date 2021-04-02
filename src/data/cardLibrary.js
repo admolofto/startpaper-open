@@ -34,6 +34,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 1, w: 1 },
     canResize: true,
+    preview: { h: 1, w: 1, scale: 0.5 },
   },
   {
     name: 'Bookmark',
@@ -45,6 +46,7 @@ export const cardLibrary = [
     max: { h: 1, w: 1 },
     min: { h: 1, w: 1 },
     canResize: false,
+    preview: { h: 1, w: 1, scale: 1 },
   },
   {
     name: 'Weather',
@@ -56,6 +58,7 @@ export const cardLibrary = [
     max: { h: 1, w: 1 },
     min: { h: 1, w: 1 },
     canResize: false,
+    preview: { h: 1, w: 1, scale: 1 },
   },
   {
     name: 'Photo',
@@ -67,6 +70,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 1, w: 1 },
     canResize: true,
+    preview: { h: 1, w: 1, scale: 1 },
   },
   {
     name: 'Note',
@@ -78,6 +82,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 2, w: 2 },
     canResize: true,
+    preview: { h: 1.5, w: 1, scale: 1 },
   },
   // {
   //   name: 'Stock',
@@ -100,6 +105,7 @@ export const cardLibrary = [
     max: { h: 8, w: 6 },
     min: { h: 2, w: 2 },
     canResize: true,
+    preview: { h: 2, w: 1, scale: 1 },
   },
   {
     name: 'Poster',
@@ -111,5 +117,6 @@ export const cardLibrary = [
     max: { h: 8, w: 4 },
     min: { h: 2, w: 1 },
     canResize: true,
+    preview: { h: 1, w: 0.75, scale: 1 },
   },
 ];
