@@ -42,9 +42,11 @@
 
 <style>
   .menubar {
-    position: relative;
+    position: fixed;
+    width: 100%;
     padding: 1rem;
     z-index: 90;
+    background: rgba(255, 255, 255, 0.8);
   }
   .menubar__inner {
     position: relative;

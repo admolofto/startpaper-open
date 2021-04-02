@@ -46,7 +46,17 @@ export const cardLibrary = [
     min: { h: 1, w: 1 },
     canResize: false,
   },
-
+  {
+    name: 'Weather',
+    cardFront: Weather,
+    cardOpts: WeatherOpts,
+    createCardStore: createWeatherStore,
+    initW: 1,
+    initH: 1,
+    max: { h: 1, w: 1 },
+    min: { h: 1, w: 1 },
+    canResize: false,
+  },
   {
     name: 'Photo',
     cardFront: Photo,
@@ -101,16 +111,5 @@ export const cardLibrary = [
     max: { h: 8, w: 4 },
     min: { h: 2, w: 1 },
     canResize: true,
-  },
-  {
-    name: 'Weather',
-    cardFront: Weather,
-    cardOpts: WeatherOpts,
-    createCardStore: createWeatherStore,
-    initW: 1,
-    initH: 1,
-    max: { h: 1, w: 1 },
-    min: { h: 1, w: 1 },
-    canResize: false,
   },
 ];

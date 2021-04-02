@@ -21,8 +21,10 @@
   },
   "dependencies": {
     "@rollup/plugin-alias": "^3.1.2",
+    "axios": "^0.21.1",
     "marked": "^2.0.1",
     "sirv-cli": "^1.0.0",
+    "svelte-loading-spinners": "^0.1.4",
     "svelte-range-slider-pips": "^1.7.0",
     "svelte-select": "^3.17.0"
   }

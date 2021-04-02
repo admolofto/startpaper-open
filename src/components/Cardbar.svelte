@@ -13,7 +13,7 @@
 
 {#if addmode}
   <div
-    class="cardbar"
+    class="cardbar shadow-lg"
     transition:fly={{
       duration: 450,
       x: -225,
@@ -52,13 +52,10 @@
     z-index: 99;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-      0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    background: rgba(220, 200, 200, 0.06);
+    background: rgba(255, 255, 255, 0.5);
     width: 225px;
     overflow-y: scroll;
     height: calc(100vh - 4rem);
-    background: rgba(220, 200, 200, 0.6);
   }
   .cardbar__card--container {
     margin: 2rem 0 4rem 0;

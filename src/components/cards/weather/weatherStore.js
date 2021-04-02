@@ -2,10 +2,14 @@ import { writable } from 'svelte/store';
 
 export const createWeatherStore = (cardId) => {
   const initialValue = {
-    contents: 'Write *anything*...',
-    font: 'sans-serif',
-    fontColor: 'black',
-    fontSize: '18px',
+    zipCode: '30047',
+    weatherData: {
+      deg: '',
+      icon: '',
+      main: '',
+      location: '',
+      description: '',
+    },
   };
 
   const { subscribe, set, update } = writable(
@@ -20,27 +24,15 @@ export const createWeatherStore = (cardId) => {
     );
   });
 
-  const setContents = (newContent) => {
+  const setZipCode = (newZipCode) => {
     update((prev) => {
-      return { ...prev, contents: newContent };
+      return { ...prev, zipCode: newZipCode };
     });
   };
 
-  const setFont = (newFont) => {
+  const setWeatherData = (newWeatherData) => {
     update((prev) => {
-      return { ...prev, font: newFont };
-    });
-  };
-
-  const setFontSize = (newFontSize) => {
-    update((prev) => {
-      return { ...prev, fontSize: newFontSize };
-    });
-  };
-
-  const setFontColor = (newFontColor) => {
-    update((prev) => {
-      return { ...prev, fontColor: newFontColor };
+      return { ...prev, weatherData: newWeatherData };
     });
   };
 
@@ -48,9 +40,7 @@ export const createWeatherStore = (cardId) => {
     subscribe,
     set,
     update,
-    setContents,
-    setFont,
-    setFontColor,
-    setFontSize,
+    setZipCode,
+    setWeatherData,
   };
 };

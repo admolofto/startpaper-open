@@ -4,13 +4,20 @@
 
   const apiKey = '6f61d621adc291e9601e23286e428163';
 
-  export let cardStore;
+  const getCoordinates = () => {
+    return new Promise(function (resolve, reject) {
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject
+      );
+    });
+  };
 
-  $: inputCity = $cardStore.city;
-  $: promise = fetchWeather(inputCity);
-
-  const fetchWeather = async (city) => {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const fetchWeather = (async () => {
+    const position = await getCoordinates();
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;
     const response = await fetch(url);
     const jsonResponse = await response.json();
     console.log(jsonResponse);
@@ -21,7 +28,7 @@
       location: jsonResponse.name,
       description: jsonResponse.weather[0].main,
     };
-  };
+  })();
 
   const toImperial = (deg) => {
     return Math.round((deg * 9) / 5 - 459.67);
@@ -29,7 +36,7 @@
 </script>
 
 <CardTemplate>
-  {#await promise}
+  {#await fetchWeather}
     <p>00° ...</p>
   {:then data}
     <div class="weather">
@@ -81,7 +88,7 @@
   }
   .weather__symbol {
     grid-area: symbol;
-    margin-top: -0.4rem;
+    margin-top: -0.7rem;
     margin-left: -0.1rem;
   }
 </style>
