@@ -19,6 +19,9 @@ import { createStockStore } from '../components/cards/stock/stockStore';
 import TradingView from '../components/cards/tradingview/TradingView.svelte';
 import TradingViewOpts from '../components/cards/tradingview/TradingViewOpts.svelte';
 import { createTradingViewStore } from '../components/cards/tradingview/tradingViewStore';
+import Weather from '../components/cards/weather/Weather.svelte';
+import WeatherOpts from '../components/cards/weather/WeatherOpts.svelte';
+import { createWeatherStore } from '../components/cards/weather/weatherStore';
 
 export const cardLibrary = [
   {
@@ -98,5 +101,16 @@ export const cardLibrary = [
     max: { h: 8, w: 4 },
     min: { h: 2, w: 1 },
     canResize: true,
+  },
+  {
+    name: 'Weather',
+    cardFront: Weather,
+    cardOpts: WeatherOpts,
+    createCardStore: createWeatherStore,
+    initW: 1,
+    initH: 1,
+    max: { h: 1, w: 1 },
+    min: { h: 1, w: 1 },
+    canResize: false,
   },
 ];

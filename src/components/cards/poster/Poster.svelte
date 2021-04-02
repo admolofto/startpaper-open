@@ -23,13 +23,13 @@
   };
 
   const createMainTmdbUrl = (filters) => {
-    let randomNum = createRandomNum(1, 5);
+    let randomNum = createRandomNum(1, 3);
     let pageQuery = `&page=${randomNum}`;
     let genreFilterQuery =
       filters.genre !== '00'
         ? `&with_genres=${filters.genre}`
         : '';
-    return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}${pageQuery}${genreFilterQuery}`;
+    return `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_original_language=en&include_adult=false${pageQuery}${genreFilterQuery}`;
   };
 
   const updatePosterStore = async (url) => {
