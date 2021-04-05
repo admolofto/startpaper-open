@@ -7,6 +7,7 @@ export const createMessageStore = (cardId) => {
     font: 'serif',
     fontColor: 'black',
     fontSize: '44px',
+    messageOption: 'greeting',
     backgroundImg:
       'https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2850&q=80',
   };
@@ -47,6 +48,12 @@ export const createMessageStore = (cardId) => {
     });
   };
 
+  const setMessageOption = (newMessageOption) => {
+    update((prev) => {
+      return { ...prev, messageOption: newMessageOption };
+    });
+  };
+
   return {
     subscribe,
     set,
@@ -55,5 +62,6 @@ export const createMessageStore = (cardId) => {
     setFontColor,
     setFontSize,
     setBackgroundImg,
+    setMessageOption,
   };
 };

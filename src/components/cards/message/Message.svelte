@@ -1,9 +1,41 @@
 <script>
+  import { onMount } from 'svelte';
+  import { userInfo } from '../../../stores/userInfoStore';
+
   export let cardStore, cardId;
+
+  $: time = $userInfo.time;
+  $: messageOption = $cardStore.messageOption;
 
   $: font = $cardStore.font;
   $: fontSize = $cardStore.fontSize;
   $: fontColor = $cardStore.fontColor;
+
+  $: message = 'Good Evening';
+
+  $: returnMessage(messageOption);
+
+  const returnGreeting = () => {
+    if (time.hour <= 4) {
+      return 'Late Night?';
+    } else if (time.hour <= 11) {
+      return 'Good Morning';
+    } else if (time.hour <= 15) {
+      return 'Good Afternoon';
+    } else if (time.hour <= 19) {
+      return 'Good Evening';
+    } else return 'Good Night';
+  };
+
+  const returnMessage = (option) => {
+    if (option === 'greeting') {
+      message = returnGreeting();
+    }
+  };
+
+  onMount(() => {
+    returnMessage(messageOption);
+  });
 </script>
 
 <div class={`message`}>
@@ -11,7 +43,7 @@
     class="message__text"
     style="--font-size: {fontSize}; --font-color: {fontColor}; --font: {font};"
   >
-    {$cardStore.customMessage}
+    {message}
   </h1>
 </div>
 

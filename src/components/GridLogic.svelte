@@ -12,6 +12,7 @@
   $: activePageIndex = $pages.findIndex(
     (item) => item.id === $activePage
   );
+
   $: isLocked = $pages[activePageIndex].locked;
   const setIsLocked = (bool) => {
     isLocked = bool;
@@ -21,13 +22,12 @@
   const gap = [10, 10];
 
   let cols = [
+    [1380, 7],
     [1210, 6],
     [1040, 5],
     [870, 4],
     [700, 3],
   ];
-
-  $: console.log(cols);
 
   $: items = $layouts[$activePage];
 
@@ -103,23 +103,34 @@
 </div>
 
 <style>
-  @media screen and (max-width: 700px) {
+  @media screen and (min-width: 700px) {
     .grid {
       width: 700px;
     }
   }
-  @media screen and (max-width: 870px) {
+  @media screen and (min-width: 870px) {
     .grid {
       width: 870px;
     }
   }
-  @media screen and (max-width: 1040px) {
+  @media screen and (min-width: 1040px) {
     .grid {
       width: 1040px;
     }
   }
+  @media screen and (min-width: 1210px) {
+    .grid {
+      width: 1210px;
+    }
+  }
+  @media screen and (min-width: 1380px) {
+    .grid {
+      width: 1380px;
+    }
+  }
   .grid {
-    padding: 4rem 100px 0 100px;
+    padding: 4rem 110px 0 110px;
+    background: pink;
   }
   :global(.svlt-grid-active) {
     opacity: 1 !important;

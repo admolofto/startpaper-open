@@ -4,7 +4,7 @@
 
   const apiKey = '6f61d621adc291e9601e23286e428163';
 
-  export let cardStore;
+  export let cardStore, cardId, flipCard, isCardFlipped;
 
   $: inputZipCode = $cardStore.zipCode || '11105';
   $: promise = fetchWeather(inputZipCode);
@@ -13,7 +13,6 @@
     let url = `https://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${apiKey}`;
     const response = await fetch(url);
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
     return {
       deg: toImperial(jsonResponse.main.temp),
       icon: jsonResponse.weather[0].icon,

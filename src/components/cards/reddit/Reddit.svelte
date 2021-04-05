@@ -1,7 +1,7 @@
 <script>
   import CardTemplate from '../CardTemplate.svelte';
 
-  export let cardStore, cardId, isCardFlipped;
+  export let cardStore, cardId, flipCard, isCardFlipped;
 
   $: getRedditPosts = fetchRedditPosts(subredditsUrlString);
 
@@ -9,17 +9,15 @@
     $cardStore.subreddits
   );
 
-  $: console.log(subredditNames);
-
   $: subredditsUrlString = returnSubredditsUrlString(
     subredditNames
   );
+
   $: subredditsHeaderString = returnSubredditsHeaderString(
     subredditNames
   );
 
   const getSubredditNames = (data) => {
-    console.log(cardId, data);
     if (data && data !== {}) {
       return data.map((item) => {
         return item.data.display_name;
@@ -42,7 +40,6 @@
       `https://www.reddit.com/r/${subredditsQuery}.json`
     );
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
     return jsonResponse.data.children;
   };
 </script>

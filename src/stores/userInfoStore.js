@@ -3,7 +3,8 @@ import { writable } from 'svelte/store';
 const { subscribe, set, update } = writable(
   JSON.parse(localStorage.getItem('userInfo')) || {
     city: 'atlanta',
-    time: '00:00',
+    time: { hours: '00', minutes: '00', seconds: '00' },
+    date: '',
   }
 );
 
@@ -25,8 +26,15 @@ const setCity = (newCity) => {
   });
 };
 
+const setDate = (newDate) => {
+  update((prev) => {
+    return { ...prev, date: newDate };
+  });
+};
+
 export const userInfo = {
   subscribe,
   setCity,
   setTime,
+  setDate,
 };

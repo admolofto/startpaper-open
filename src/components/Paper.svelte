@@ -17,9 +17,17 @@
     addmode = bool;
   };
 
+  const updateTime = () => {
+    let d = new Date();
+    userInfo.setTime({
+      hours: d.getHours(),
+      minutes: d.getMinutes(),
+      seconds: d.getSeconds(),
+    });
+  };
+
   setInterval(() => {
-    let newTime = new Date().toLocaleTimeString();
-    userInfo.setTime(newTime);
+    updateTime();
   }, 1000);
 </script>
 

@@ -9,11 +9,13 @@
   $: symbol = $cardStore.symbol;
   $: companyName = '';
 
-  let apiToken = 'Tsk_9ce02047bcac4f55bb42cdf036066e0a';
-  let baseURL = 'https://sandbox.iexapis.com/stable/';
+  $: console.log(logo);
 
-  // let apiToken = 'pk_c65a697e7c4d405a809fa83a6f356a4c';
-  // let baseURL = 'https://cloud.iexapis.com/stable/';
+  // let apiToken = 'Tsk_9ce02047bcac4f55bb42cdf036066e0a';
+  // let baseURL = 'https://sandbox.iexapis.com/stable/';
+
+  let apiToken = 'pk_c65a697e7c4d405a809fa83a6f356a4c';
+  let baseURL = 'https://cloud.iexapis.com/stable/';
 
   $: data = [0, 0, 0];
 
@@ -101,6 +103,7 @@
         });
 
         getCompany().then((company) => {
+          console.log(company);
           companyName = company.companyName;
           if (
             company.website === '' ||
@@ -162,9 +165,7 @@
           </p>
         {/if}
       </div>
-      <div>
-        <p class="stock__quote--price">{realtimePrice}</p>
-      </div>
+      <p class="stock__quote--price">{realtimePrice}</p>
     </div>
     <div class="stock__chart">
       <canvas
@@ -218,6 +219,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
+    width: 6rem;
   }
   .stock__chart--canvas {
     margin: 0.2rem 0;

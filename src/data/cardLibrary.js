@@ -13,7 +13,7 @@ import { createPhotoStore } from '../components/cards/photo/photoStore';
 import Poster from '../components/cards/poster/Poster.svelte';
 import PosterOpts from '../components/cards/poster/PosterOpts.svelte';
 import { createPosterStore } from '../components/cards/poster/posterStore';
-import Stock from '../components/cards/stock/Stock.svelte';
+import Stock from '../components/cards/stock/StockRework.svelte';
 import StockOpts from '../components/cards/stock/StockOpts.svelte';
 import { createStockStore } from '../components/cards/stock/stockStore';
 import TradingView from '../components/cards/tradingview/TradingView.svelte';
@@ -97,19 +97,20 @@ export const cardLibrary = [
   //   max: { h: 1, w: 2 },
   //   min: { h: 1, w: 2 },
   //   canResize: false,
+  //   preview: { h: 1, w: 2, scale: 1 },
   // },
-  {
-    name: 'TradingView',
-    cardFront: TradingView,
-    cardOpts: TradingViewOpts,
-    createCardStore: createTradingViewStore,
-    initW: 2,
-    initH: 4,
-    max: { h: 8, w: 6 },
-    min: { h: 2, w: 2 },
-    canResize: true,
-    preview: { h: 2, w: 1, scale: 1 },
-  },
+  // {
+  //   name: 'TradingView',
+  //   cardFront: TradingView,
+  //   cardOpts: TradingViewOpts,
+  //   createCardStore: createTradingViewStore,
+  //   initW: 2,
+  //   initH: 4,
+  //   max: { h: 8, w: 6 },
+  //   min: { h: 2, w: 2 },
+  //   canResize: true,
+  //   preview: { h: 2, w: 1, scale: 1 },
+  // },
   {
     name: 'Poster',
     cardFront: Poster,

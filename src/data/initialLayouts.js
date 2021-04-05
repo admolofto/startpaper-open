@@ -24,7 +24,7 @@ export const initialLayouts = {
         y: 0,
         w: 1,
         h: 2,
-        resizable: true,
+        resizable: false,
         draggable: false,
       }),
       name: 'Poster',
