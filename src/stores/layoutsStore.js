@@ -147,6 +147,16 @@ const removeCard = (cardID) => {
   });
 };
 
+const getCardDimensions = (cardId) => {
+  let cardIndex = returnCardIndexForActivePage(cardId);
+  console.log(cardIndex);
+  console.log(layoutsValue[activePageValue]);
+  return {
+    w: layoutsValue[activePageValue][cardIndex][cols].w,
+    h: layoutsValue[activePageValue][cardIndex][cols].h,
+  };
+};
+
 export const layouts = {
   subscribe,
   updateLayout,
@@ -156,4 +166,5 @@ export const layouts = {
   setCardLock,
   addCard,
   removeCard,
+  getCardDimensions,
 };

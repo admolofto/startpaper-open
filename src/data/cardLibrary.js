@@ -22,6 +22,9 @@ import { createTradingViewStore } from '../components/cards/tradingview/tradingV
 import Weather from '../components/cards/weather/Weather.svelte';
 import WeatherOpts from '../components/cards/weather/WeatherOpts.svelte';
 import { createWeatherStore } from '../components/cards/weather/weatherStore';
+import Reddit from '../components/cards/reddit/Reddit.svelte';
+import RedditOpts from '../components/cards/reddit/RedditOpts.svelte';
+import { createRedditStore } from '../components/cards/reddit/redditStore';
 
 export const cardLibrary = [
   {
@@ -70,7 +73,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 1, w: 1 },
     canResize: true,
-    preview: { h: 1, w: 1, scale: 1 },
+    preview: { h: 2, w: 1, scale: 1 },
   },
   {
     name: 'Note',
@@ -117,6 +120,18 @@ export const cardLibrary = [
     max: { h: 8, w: 4 },
     min: { h: 2, w: 1 },
     canResize: true,
-    preview: { h: 1, w: 0.75, scale: 1 },
+    preview: { h: 2, w: 0.75, scale: 1 },
+  },
+  {
+    name: 'Reddit',
+    cardFront: Reddit,
+    cardOpts: RedditOpts,
+    createCardStore: createRedditStore,
+    initW: 2,
+    initH: 4,
+    max: { h: 8, w: 4 },
+    min: { h: 2, w: 2 },
+    canResize: true,
+    preview: { h: 3, w: 1, scale: 1 },
   },
 ];

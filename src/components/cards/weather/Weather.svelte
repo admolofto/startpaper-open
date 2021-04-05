@@ -19,6 +19,7 @@
       icon: jsonResponse.weather[0].icon,
       location: jsonResponse.name,
       description: jsonResponse.weather[0].main,
+      id: jsonResponse.sys.id,
     };
   };
 
@@ -31,7 +32,10 @@
   {#await promise}
     <p>00° ...</p>
   {:then data}
-    <div class="weather">
+    <a
+      class="weather"
+      href="https://openweathermap.org/city/{data.id}"
+    >
       <div class="weather__location">
         <div class="weather__location--icon">
           <Icon icon="map-pin" size="12" />
@@ -46,7 +50,7 @@
         src="http://openweathermap.org/img/wn/{data.icon}@2x.png"
         alt="icon not found"
       />
-    </div>
+    </a>
   {:catch error}
     <p>{error.message}</p>
   {/await}
@@ -79,8 +83,10 @@
     font-weight: 500;
   }
   .weather__symbol {
+    height: 4rem;
+    width: 4rem;
     grid-area: symbol;
-    margin-top: -0.4rem;
-    margin-left: -0.1rem;
+    margin-top: -0.7rem;
+    margin-left: -0.5rem;
   }
 </style>

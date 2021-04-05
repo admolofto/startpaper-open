@@ -57,13 +57,15 @@
 </script>
 
 <div class="poster">
-  <div class:poster--details-overlay={!isCardFlipped}>
-    <a href={urlTmdbMoviePage}>
-      <h1 class="poster--details-overlay--title-year">
-        {movieDetails}
-      </h1>
-    </a>
-  </div>
+  {#if !isCardFlipped}
+    <div class="poster--details-overlay">
+      <a href={urlTmdbMoviePage}>
+        <h1 class="poster--details-overlay--title-year">
+          {movieDetails}
+        </h1>
+      </a>
+    </div>
+  {/if}
   <InputDraggablePhoto {cardStore} {cardId} {flipCard} />
 </div>
 

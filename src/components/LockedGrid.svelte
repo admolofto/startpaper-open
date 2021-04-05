@@ -25,15 +25,33 @@
   };
 </script>
 
-<div
-  class="w-full h-full flex flex-col justify-center items-center"
->
-  <h1>{message}</h1>
-  <InputText
-    inputType="password"
-    maxlength="4"
-    bind:value
-    {handleEnterPress}
-    error={wrongPin}
-  />
+<div class="locked-grid">
+  <h1 class="locked-grid--message">{message}</h1>
+  <div class="locked-grid--input">
+    <InputText
+      inputType="password"
+      maxlength="4"
+      bind:value
+      {handleEnterPress}
+      error={wrongPin}
+    />
+  </div>
 </div>
+
+<style>
+  .locked-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    width: 100%;
+  }
+  .locked-grid--message {
+    width: fit-content;
+    margin-bottom: 1rem;
+  }
+  .locked-grid--input {
+    width: 8rem;
+  }
+</style>

@@ -7,8 +7,8 @@ export const initialLayouts = {
     {
       id: 'c03',
       6: item({
-        x: 2,
-        y: 1,
+        x: 0,
+        y: 0,
         w: 1,
         h: 1,
         resizable: false,
@@ -46,9 +46,9 @@ export const initialLayouts = {
     {
       id: 'c00',
       6: item({
-        x: 1,
+        x: 2,
         y: 0,
-        w: 4,
+        w: 2,
         h: 1,
         resizable: false,
         draggable: false,
@@ -61,8 +61,8 @@ export const initialLayouts = {
       6: item({
         x: 1,
         y: 2,
-        w: 2,
-        h: 3,
+        w: 1,
+        h: 2,
         resizable: false,
         draggable: false,
       }),
@@ -72,14 +72,27 @@ export const initialLayouts = {
     {
       id: 'c02',
       6: item({
-        x: 3,
-        y: 2,
-        w: 2,
-        h: 3,
+        x: 2,
+        y: 1,
+        w: 1,
+        h: 2,
         resizable: false,
         draggable: false,
       }),
       name: 'Note',
+      canResize: true,
+    },
+    {
+      id: 'c32432',
+      6: item({
+        x: 3,
+        y: 2,
+        w: 2,
+        h: 4,
+        resizable: false,
+        draggable: false,
+      }),
+      name: 'Reddit',
       canResize: true,
     },
   ],
@@ -126,10 +139,10 @@ export const initialLayouts = {
     {
       id: 'c06',
       6: item({
-        x: 3,
-        y: 2,
-        w: 2,
-        h: 3,
+        x: 2,
+        y: 1,
+        w: 1,
+        h: 2,
         resizable: false,
         draggable: false,
       }),

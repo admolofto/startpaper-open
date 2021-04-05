@@ -9,7 +9,7 @@
   let selectedColor = $cardStore.fontColor;
   let selectedFontSize = $cardStore.fontSize;
 
-  const fontSizes = ['14px', '18px', '24px', '28px'];
+  const fontSizes = ['16px', '18px', '24px', '28px'];
 
   let fontIndex = fontSizes.findIndex(
     (item) => item === selectedFontSize
