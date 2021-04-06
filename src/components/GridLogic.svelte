@@ -37,6 +37,8 @@
   let optionsFlip = false;
   let optionsFlippedCardId = '';
 
+  $: console.log($columns.currentColumn);
+
   const flipCard = (
     cardId,
     side = 'front',
@@ -119,6 +121,11 @@
 </div>
 
 <style>
+  @media screen and (min-width: 375px) {
+    .grid {
+      width: 375px;
+    }
+  }
   @media screen and (min-width: 700px) {
     .grid {
       width: 700px;
@@ -157,7 +164,6 @@
   }
   .grid {
     flex: none;
-    background: lightpink;
   }
   :global(.svlt-grid-active) {
     opacity: 1 !important;

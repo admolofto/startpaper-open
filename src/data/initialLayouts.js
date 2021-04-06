@@ -7,7 +7,7 @@ export const initialLayouts = {
     {
       id: 'c000',
       8: item({
-        x: 4,
+        x: 3,
         y: 0,
         w: 2,
         h: 1,
@@ -15,9 +15,9 @@ export const initialLayouts = {
         draggable: false,
       }),
       7: item({
-        x: 3,
+        x: 2,
         y: 0,
-        w: 2,
+        w: 3,
         h: 1,
         resizable: false,
         draggable: false,
@@ -66,5 +66,4 @@ export const initialLayouts = {
       canResize: true,
     },
   ],
-  p01: [],
 };

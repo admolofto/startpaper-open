@@ -44,7 +44,7 @@
   };
 </script>
 
-<CardTemplate>
+<CardTemplate overflow={true}>
   <h1 class="reddit-feed__header">
     r/{subredditsHeaderString}
   </h1>

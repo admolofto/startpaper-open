@@ -1,10 +1,7 @@
 import { writable } from 'svelte/store';
 import { activePage } from './activePageStore';
 
-const initialPages = [
-  { id: 'p00', name: 'Home' },
-  { id: 'p01', name: 'News' },
-];
+const initialPages = [{ id: 'p00', name: 'Frontpage' }];
 
 const { subscribe, set, update } = writable(
   JSON.parse(localStorage.getItem('pages')) || initialPages

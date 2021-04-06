@@ -16,6 +16,5 @@
   }
   .page-name--active {
     color: black;
-    text-decoration: underline;
   }
 </style>

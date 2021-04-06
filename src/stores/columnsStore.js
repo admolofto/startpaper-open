@@ -9,6 +9,7 @@ const { subscribe, set, update } = writable(
       [1040, 5],
       [870, 4],
       [700, 3],
+      [375, 2],
     ],
     currentColumn: 0,
   }

@@ -18,11 +18,11 @@
   const returnGreeting = () => {
     if (time.hour <= 4) {
       return 'Late Night?';
-    } else if (time.hour <= 11) {
+    } else if (time.hours <= 11) {
       return 'Good Morning';
-    } else if (time.hour <= 15) {
+    } else if (time.hours <= 15) {
       return 'Good Afternoon';
-    } else if (time.hour <= 19) {
+    } else if (time.hours <= 19) {
       return 'Good Evening';
     } else return 'Good Night';
   };

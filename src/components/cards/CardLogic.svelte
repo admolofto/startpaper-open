@@ -26,9 +26,16 @@
   $: isCardFlipped = flippedCardId === cardId;
 
   $: cardIndex = layouts.returnCardIndex(cardId);
-  $: cardPosX =
-    $layouts[$activePage][cardIndex][$columns.currentColumn]
-      .x;
+  $: cardPosX = -1;
+  $: if (
+    $columns.currentColumn &&
+    $layouts[$activePage][cardIndex]
+  ) {
+    cardPosX =
+      $layouts[$activePage][cardIndex][
+        $columns.currentColumn
+      ].x;
+  }
 
   $: isCardInLastColumn = false;
 
