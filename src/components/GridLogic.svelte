@@ -6,8 +6,12 @@
   import LockedGrid from './LockedGrid.svelte';
   import { pages } from '../stores/pagesStore';
   import DetectOutsideClick from '../utils/DetectOutsideClick.svelte';
+  import { onMount } from 'svelte';
+  import { columns } from '../stores/columnsStore';
 
   export let editmode;
+
+  let gridContainer;
 
   $: activePageIndex = $pages.findIndex(
     (item) => item.id === $activePage
@@ -21,13 +25,7 @@
   const rowHeight = 130;
   const gap = [10, 10];
 
-  let cols = [
-    [1380, 7],
-    [1210, 6],
-    [1040, 5],
-    [870, 4],
-    [700, 3],
-  ];
+  let cols = $columns.columns;
 
   $: items = $layouts[$activePage];
 
@@ -67,6 +65,22 @@
   const handleOutsideClick = () => {
     flipCard(flippedCardId);
   };
+
+  onMount(async () => {
+    let resObs = new ResizeObserver((e) => {
+      let width = e[0].contentRect.width;
+      let currentCol;
+      cols.forEach((col) => {
+        if (width === col[0] - 202) {
+          currentCol = col[1];
+        }
+      });
+      columns.setCurrentColumn(currentCol);
+      if (flippedCardId !== '') {
+        flipCard(flippedCardId);
+      }
+    }).observe(gridContainer);
+  });
 </script>
 
 <DetectOutsideClick
@@ -75,31 +89,33 @@
   renderOutsideArea={flippedCardId !== '' || optionsFlip}
 />
 
-<div class="grid">
-  {#if !isLocked}
-    <Grid
-      bind:items
-      on:change={onChange}
-      let:item
-      let:dataItem
-      bind:cols
-      {rowHeight}
-      {gap}
-      fastStart
-      scroller={document.documentElement}
-    >
-      <CardLogic
-        cardId={dataItem.id}
-        cardName={dataItem.name}
-        {editmode}
-        {flippedCardId}
-        {flipCard}
-        {optionsFlippedCardId}
-      />
-    </Grid>
-  {:else}
-    <LockedGrid {setIsLocked} />
-  {/if}
+<div class="grid--container">
+  <div class="grid" bind:this={gridContainer}>
+    {#if !isLocked}
+      <Grid
+        bind:items
+        on:change={onChange}
+        let:item
+        let:dataItem
+        bind:cols
+        {rowHeight}
+        {gap}
+        fastStart
+        scroller={document.documentElement}
+      >
+        <CardLogic
+          cardId={dataItem.id}
+          cardName={dataItem.name}
+          {editmode}
+          {flippedCardId}
+          {flipCard}
+          {optionsFlippedCardId}
+        />
+      </Grid>
+    {:else}
+      <LockedGrid {setIsLocked} />
+    {/if}
+  </div>
 </div>
 
 <style>
@@ -128,9 +144,17 @@
       width: 1380px;
     }
   }
+  .grid--container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 4.1rem;
+  }
   .grid {
-    padding: 4rem 110px 0 110px;
-    background: pink;
+    flex: none;
+    border: 1px solid darkslategrey;
+    border-radius: 20px;
+    padding: 0 100px;
   }
   :global(.svlt-grid-active) {
     opacity: 1 !important;

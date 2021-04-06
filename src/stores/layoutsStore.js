@@ -2,6 +2,7 @@ import { writable } from 'svelte/store';
 import gridHelp from 'svelte-grid/build/helper/index.mjs';
 import { initialLayouts } from '../data/initialLayouts';
 import { activePage } from './activePageStore';
+import { columns } from './columnsStore';
 
 const { subscribe, set, update } = writable(
   JSON.parse(localStorage.getItem('layouts')) ||
@@ -19,6 +20,15 @@ activePage.subscribe((value) => {
   activePageValue = value;
 });
 
+let columnsValue;
+columns.subscribe((value) => {
+  columnsValue = value;
+});
+
+const colsList = columnsValue.columns;
+
+$: console.log(columnsValue);
+
 const { item } = gridHelp;
 
 const returnCardIndexForActivePage = (cardId) => {
@@ -30,8 +40,6 @@ const returnCardIndexForActivePage = (cardId) => {
 const generateCardId = () => {
   return 'c' + Math.random().toString(36).substr(2, 9);
 };
-
-const cols = 6;
 
 // Update functions
 
@@ -51,18 +59,20 @@ const toggleEditmode = (editmode) => {
   update((prev) => {
     let newLayouts = {};
     let isResizable = false;
-    for (const property in prev) {
+    for (const pageId in prev) {
+      console.log(pageId);
       isResizable = prev;
-      newLayouts[property] = prev[property].map((card) => {
+      newLayouts[pageId] = prev[pageId].map((card) => {
         isResizable = card.canResize;
-        return {
-          ...card,
-          [cols]: {
-            ...card[cols],
+        let newCard = { ...card };
+        colsList.forEach((col) => {
+          newCard[col[1]] = {
+            ...card[col[1]],
             draggable: editmode,
             resizable: isResizable ? editmode : false,
-          },
-        };
+          };
+        });
+        return newCard;
       });
     }
     return newLayouts;
@@ -81,18 +91,25 @@ const changeZIndex = (cardId, zIndex) => {
   }, 200);
 };
 
+TODO: Don't create a new card. Only update the draggable/resizable of the currentColumn
+
 const setCardLock = (cardId, bool) => {
   update((prev) => {
     let cardIndex = returnCardIndexForActivePage(cardId);
     if (cardIndex !== -1) {
       let isResizable =
         prev[activePageValue][cardIndex].canResize;
+      console.log(columnsValue.currentColumn);
       let newCard = {
-        ...prev[activePageValue][cardIndex][cols],
+        ...prev[activePageValue][cardIndex][
+          columnsValue.currentColumn
+        ],
         draggable: bool,
         resizable: bool && isResizable ? true : false,
       };
-      prev[activePageValue][cardIndex][cols] = newCard;
+      prev[activePageValue][cardIndex][
+        columnsValue.currentColumn
+      ] = newCard;
     }
     return prev;
   });
@@ -102,7 +119,13 @@ const addCard = (card) => {
   update((prev) => {
     let newCard = {
       id: generateCardId(),
-      [cols]: item({
+      name: card.name,
+      canResize: card.canResize,
+    };
+
+    colsList.forEach((col) => {
+      console.log(col);
+      newCard[col[1]] = item({
         x: 0,
         y: 0,
         w: card.initW,
@@ -111,28 +134,31 @@ const addCard = (card) => {
         max: card.max,
         draggable: true,
         resizable: card.canResize,
-      }),
-      name: card.name,
-      canResize: card.canResize,
-    };
+      });
+    });
 
-    let findOutPosition = gridHelp.findSpace(
-      newCard,
-      prev[activePageValue],
-      cols
-    );
+    colsList.forEach((col) => {
+      let findOutPosition = gridHelp.findSpace(
+        newCard,
+        prev[activePageValue],
+        col[1]
+      );
 
-    newCard = {
-      ...newCard,
-      [cols]: { ...newCard[cols], ...findOutPosition },
-    };
+      console.log(findOutPosition);
+
+      newCard = {
+        ...newCard,
+        [col[1]]: {
+          ...newCard[col[1]],
+          ...findOutPosition,
+        },
+      };
+    });
 
     let cards = prev[activePageValue];
     cards = [...cards, newCard];
-    // Do I need this?
     //cards = gridHelp.normalize(cards, cols)
     prev[activePageValue] = cards;
-    console.log(prev);
     return prev;
   });
 };
