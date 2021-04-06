@@ -27,8 +27,6 @@ columns.subscribe((value) => {
 
 const colsList = columnsValue.columns;
 
-$: console.log(columnsValue);
-
 const { item } = gridHelp;
 
 const returnCardIndexForActivePage = (cardId) => {
@@ -60,7 +58,6 @@ const toggleEditmode = (editmode) => {
     let newLayouts = {};
     let isResizable = false;
     for (const pageId in prev) {
-      console.log(pageId);
       isResizable = prev;
       newLayouts[pageId] = prev[pageId].map((card) => {
         isResizable = card.canResize;
@@ -91,25 +88,24 @@ const changeZIndex = (cardId, zIndex) => {
   }, 200);
 };
 
-TODO: Don't create a new card. Only update the draggable/resizable of the currentColumn
-
 const setCardLock = (cardId, bool) => {
   update((prev) => {
     let cardIndex = returnCardIndexForActivePage(cardId);
     if (cardIndex !== -1) {
       let isResizable =
         prev[activePageValue][cardIndex].canResize;
-      console.log(columnsValue.currentColumn);
+
+      let currentColumn = columnsValue.currentColumn;
+      let oldCard = prev[activePageValue][cardIndex];
       let newCard = {
-        ...prev[activePageValue][cardIndex][
-          columnsValue.currentColumn
-        ],
-        draggable: bool,
-        resizable: bool && isResizable ? true : false,
+        ...oldCard,
+        [currentColumn]: {
+          ...oldCard[currentColumn],
+          draggable: bool,
+          resizable: bool && isResizable ? true : false,
+        },
       };
-      prev[activePageValue][cardIndex][
-        columnsValue.currentColumn
-      ] = newCard;
+      prev[activePageValue][cardIndex] = newCard;
     }
     return prev;
   });
@@ -124,7 +120,6 @@ const addCard = (card) => {
     };
 
     colsList.forEach((col) => {
-      console.log(col);
       newCard[col[1]] = item({
         x: 0,
         y: 0,
@@ -143,8 +138,6 @@ const addCard = (card) => {
         prev[activePageValue],
         col[1]
       );
-
-      console.log(findOutPosition);
 
       newCard = {
         ...newCard,
@@ -173,14 +166,31 @@ const removeCard = (cardID) => {
   });
 };
 
-const getCardDimensions = (cardId) => {
+const getCardLayout = (cardId) => {
   let cardIndex = returnCardIndexForActivePage(cardId);
-  console.log(cardIndex);
-  console.log(layoutsValue[activePageValue]);
+  let currentColumn = columnsValue.currentColumn;
   return {
-    w: layoutsValue[activePageValue][cardIndex][cols].w,
-    h: layoutsValue[activePageValue][cardIndex][cols].h,
+    x:
+      layoutsValue[activePageValue][cardIndex][
+        currentColumn
+      ].x,
+    y:
+      layoutsValue[activePageValue][cardIndex][
+        currentColumn
+      ].y,
+    w:
+      layoutsValue[activePageValue][cardIndex][
+        currentColumn
+      ].w,
+    h:
+      layoutsValue[activePageValue][cardIndex][
+        currentColumn
+      ].h,
   };
+};
+
+const returnCardIndex = (cardId) => {
+  return returnCardIndexForActivePage(cardId);
 };
 
 export const layouts = {
@@ -192,5 +202,6 @@ export const layouts = {
   setCardLock,
   addCard,
   removeCard,
-  getCardDimensions,
+  getCardLayout,
+  returnCardIndex,
 };

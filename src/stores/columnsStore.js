@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 const { subscribe, set, update } = writable(
   JSON.parse(localStorage.getItem('columns')) || {
     columns: [
+      [1550, 8],
       [1380, 7],
       [1210, 6],
       [1040, 5],

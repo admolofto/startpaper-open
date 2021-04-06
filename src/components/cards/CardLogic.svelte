@@ -3,6 +3,9 @@
   import { cardLibrary } from '../../data/cardLibrary';
   import DetectDrag from './DetectDrag.svelte';
   import OptionsTemplate from './OptionsTemplate.svelte';
+  import { columns } from '../../stores/columnsStore';
+  import { layouts } from '../../stores/layoutsStore';
+  import { activePage } from '../../stores/activePageStore';
 
   export let cardId,
     cardName,
@@ -11,16 +14,30 @@
     flipCard,
     optionsFlippedCardId;
 
-  const cardIndex = cardLibrary.findIndex(
+  const cardLibraryIndex = cardLibrary.findIndex(
     (item) => item.name === cardName
   );
 
-  const cardFront = cardLibrary[cardIndex].cardFront;
-  const cardOpts = cardLibrary[cardIndex].cardOpts;
-  const cardStore = cardLibrary[cardIndex].createCardStore(
-    cardId
-  );
+  const cardFront = cardLibrary[cardLibraryIndex].cardFront;
+  const cardOpts = cardLibrary[cardLibraryIndex].cardOpts;
+  const cardStore = cardLibrary[
+    cardLibraryIndex
+  ].createCardStore(cardId);
   $: isCardFlipped = flippedCardId === cardId;
+
+  $: cardIndex = layouts.returnCardIndex(cardId);
+  $: cardPosX =
+    $layouts[$activePage][cardIndex][$columns.currentColumn]
+      .x;
+
+  $: isCardInLastColumn = false;
+
+  const checkIfCardInLastColumn = (posX) => {
+    let currentColumn = $columns.currentColumn;
+    isCardInLastColumn = posX === currentColumn - 1;
+  };
+
+  $: checkIfCardInLastColumn(cardPosX);
 
   let hideBack = false;
   // See if we need to add this. If so, need to fix photo reposition functionality.
@@ -57,12 +74,18 @@
       {/if}
     </div>
     <div class="card-logic__slot" slot="back">
-      <OptionsTemplate {cardId} {cardName} {flipCard}>
+      <OptionsTemplate
+        {cardId}
+        {cardName}
+        {flipCard}
+        {isCardInLastColumn}
+      >
         <svelte:component
           this={cardOpts}
           {cardStore}
           {cardId}
           {flipCard}
+          {isCardInLastColumn}
         /></OptionsTemplate
       >
     </div>

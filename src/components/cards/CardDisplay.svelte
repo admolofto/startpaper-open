@@ -1,4 +1,7 @@
 <script>
+  import { layouts } from '../../stores/layoutsStore';
+  import { columns } from '../../stores/columnsStore';
+
   export let isDragging,
     editmode,
     cardId,

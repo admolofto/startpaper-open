@@ -71,7 +71,7 @@
       let width = e[0].contentRect.width;
       let currentCol;
       cols.forEach((col) => {
-        if (width === col[0] - 202) {
+        if (width === col[0]) {
           currentCol = col[1];
         }
       });
@@ -144,6 +144,11 @@
       width: 1380px;
     }
   }
+  @media screen and (min-width: 1550px) {
+    .grid {
+      width: 1550px;
+    }
+  }
   .grid--container {
     width: 100%;
     display: flex;
@@ -152,9 +157,7 @@
   }
   .grid {
     flex: none;
-    border: 1px solid darkslategrey;
-    border-radius: 20px;
-    padding: 0 100px;
+    background: lightpink;
   }
   :global(.svlt-grid-active) {
     opacity: 1 !important;

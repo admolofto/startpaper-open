@@ -2,7 +2,7 @@
   import { layouts } from '../../stores/layoutsStore';
   import Icon from '../Icon.svelte';
 
-  export let cardId, cardName, flipCard;
+  export let cardId, cardName, flipCard, isCardInLastColumn;
 
   const handleDoneClick = () => {
     flipCard(cardId);
@@ -14,7 +14,10 @@
   };
 </script>
 
-<div class="options-template">
+<div
+  class="options-template"
+  class:last-column={isCardInLastColumn}
+>
   <div class="options-template__header">
     <h1 class="options-template__header--title">
       {cardName}
@@ -38,6 +41,7 @@
 
 <style>
   .options-template {
+    position: absolute;
     min-width: 100%;
     min-height: 100%;
     width: max-content;
@@ -63,5 +67,8 @@
   }
   .options-template__done-button {
     margin-top: 0.5rem;
+  }
+  .last-column {
+    right: 0;
   }
 </style>

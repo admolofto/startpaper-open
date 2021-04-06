@@ -6,6 +6,14 @@ export const initialLayouts = {
   p00: [
     {
       id: 'c000',
+      8: item({
+        x: 4,
+        y: 0,
+        w: 2,
+        h: 1,
+        resizable: false,
+        draggable: false,
+      }),
       7: item({
         x: 3,
         y: 0,
