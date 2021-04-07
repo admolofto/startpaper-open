@@ -2,7 +2,7 @@ import { writable } from 'svelte/store';
 
 export const createWeatherStore = (cardId) => {
   const initialValue = {
-    zipCode: '30047',
+    zipCode: '10452',
     weatherData: {
       deg: '58',
       icon: '01d',

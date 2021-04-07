@@ -10,7 +10,6 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  position: absolute;
   background: none;
 }
 
