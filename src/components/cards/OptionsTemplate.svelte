@@ -4,10 +4,6 @@
 
   export let cardId, cardName, flipCard, isCardInLastColumn;
 
-  const handleDoneClick = () => {
-    flipCard(cardId);
-  };
-
   const handleRemoveClick = () => {
     flipCard(cardId);
     layouts.removeCard(cardId);
@@ -30,13 +26,6 @@
   <div class="options-template__options-slot">
     <slot />
   </div>
-
-  <button
-    class="options-template__done-button"
-    on:click={handleDoneClick}
-  >
-    Done
-  </button>
 </div>
 
 <style>
@@ -64,9 +53,6 @@
     display: flex;
     flex-direction: column;
     margin: 0.5rem 0;
-  }
-  .options-template__done-button {
-    margin-top: 0.5rem;
   }
   .last-column {
     right: 0;

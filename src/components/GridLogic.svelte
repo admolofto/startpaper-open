@@ -1,5 +1,6 @@
 <script>
   import Grid from 'svelte-grid';
+  import gridHelp from 'svelte-grid/build/helper/index.mjs';
   import { layouts } from '../stores/layoutsStore';
   import { activePage } from '../stores/activePageStore';
   import CardLogic from './cards/CardLogic.svelte';
@@ -30,14 +31,16 @@
   $: items = $layouts[$activePage];
 
   const onChange = () => {
+    items = gridHelp.normalize(
+      items,
+      $columns.currentColumn
+    );
     layouts.updateLayout(items);
   };
 
   let flippedCardId = '';
   let optionsFlip = false;
   let optionsFlippedCardId = '';
-
-  $: console.log($columns.currentColumn);
 
   const flipCard = (
     cardId,
