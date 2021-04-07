@@ -1,4 +1,6 @@
 <script>
+  import CardTemplate from '../CardTemplate.svelte';
+
   export let cardStore, cardId;
 
   $: withHttp = (testUrl) =>
@@ -13,16 +15,18 @@
   $: favicon = `https://api.faviconkit.com/${url.host}/144`;
 </script>
 
-<div class="bookmark">
-  <a class="bookmark__link" href={url.origin}>
-    <img
-      class="bookmark__favicon"
-      src={favicon}
-      alt={bookmarkName}
-    />
-    <h1 class="bookmark__title">{bookmarkName}</h1>
-  </a>
-</div>
+<CardTemplate background={false}>
+  <div class="bookmark">
+    <a class="bookmark__link" href={url.origin}>
+      <img
+        class="bookmark__favicon"
+        src={favicon}
+        alt={bookmarkName}
+      />
+      <h1 class="bookmark__title">{bookmarkName}</h1>
+    </a>
+  </div>
+</CardTemplate>
 
 <style>
   .bookmark {
@@ -48,5 +52,6 @@
   }
   .bookmark__title {
     text-align: center;
+    font-size: 14px;
   }
 </style>

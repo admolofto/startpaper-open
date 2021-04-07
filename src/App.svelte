@@ -2,11 +2,16 @@
   import Paper from './components/Paper.svelte';
 </script>
 
-<Paper />
+<div>
+  <Paper />
+</div>
 
 <style>
-  :global(.full) {
-    width: 100%;
-    height: 100%;
+  :global(body) {
+    background: rgb(251, 251, 252);
+  }
+
+  :global(h1, h2, h3) {
+    color: var(--header-color);
   }
 </style>

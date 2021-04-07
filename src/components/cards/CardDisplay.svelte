@@ -1,4 +1,6 @@
 <script>
+  import CardTemplate from './CardTemplate.svelte';
+
   export let isDragging,
     editmode,
     cardId,
@@ -37,8 +39,11 @@
     <div
       class="card-display__card card-display__card-front"
       class:card-display__card-front--editmode={editmode}
+      class:hidden={isFlipped}
     >
-      <slot>Front</slot>
+      <CardTemplate>
+        <slot>Front</slot>
+      </CardTemplate>
     </div>
 
     <div class="card-display__card card-display__card-back">
@@ -83,14 +88,16 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    transform: rotateY(0deg);
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
   .card-display__card-front {
     border-radius: 10px;
   }
   .card-display__card-front--editmode {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
   .card-display__card-back {
     transform: rotateY(180deg);

@@ -11,6 +11,8 @@
   const handleAddmodeClick = () => {
     setAddmode(!addmode);
   };
+
+  const handleSettingsClick = () => {};
 </script>
 
 <div class="menubar">
@@ -29,6 +31,12 @@
       <Pagesbar {editmode} />
     </div>
     <div class="menubar__section menubar__section-right">
+      {#if editmode}
+        <MenubarButton
+          on:click={handleSettingsClick}
+          icon="settings"
+        />
+      {/if}
       <MenubarButton
         on:click={handleEditmodeClick}
         isActive={editmode}
@@ -46,7 +54,7 @@
     width: 100%;
     padding: 1rem;
     z-index: 90;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(251, 251, 252, 0.8);
   }
   .menubar__inner {
     position: relative;
