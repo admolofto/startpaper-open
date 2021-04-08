@@ -1,9 +1,11 @@
 <script>
   import CardTemplate from './CardTemplate.svelte';
+  import { cardLibrary } from '../../data/cardLibrary';
 
   export let isDragging,
     editmode,
     cardId,
+    cardName,
     flippedCardId,
     flipCard,
     optionsFlippedCardId;
@@ -16,6 +18,11 @@
 
   $: isFlipped = flippedCardId === cardId;
   $: isOptionsFlipped = optionsFlippedCardId === cardId;
+
+  const cardLibraryIndex = cardLibrary.findIndex(
+    (card) => card.name === cardName
+  );
+  const cardDisplay = cardLibrary[cardLibraryIndex].display;
 </script>
 
 <div
@@ -38,10 +45,14 @@
     {/if}
     <div
       class="card-display__card card-display__card-front"
-      class:card-display__card-front--editmode={editmode}
       class:hidden={isFlipped}
     >
-      <CardTemplate>
+      <CardTemplate
+        background={cardDisplay.background}
+        padding={cardDisplay.padding}
+        overflow={cardDisplay.overflow}
+        {editmode}
+      >
         <slot>Front</slot>
       </CardTemplate>
     </div>
@@ -94,10 +105,6 @@
   }
   .card-display__card-front {
     border-radius: 10px;
-  }
-  .card-display__card-front--editmode {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgba(0, 0, 0, 0.05);
   }
   .card-display__card-back {
     transform: rotateY(180deg);

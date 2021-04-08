@@ -28,25 +28,23 @@
   };
 </script>
 
-<CardTemplate>
-  <div
-    class="note"
-    style="--font: {font}; --font-color: {fontColor}; --font-size: {fontSize};"
-    on:mousedown={handleMousedown}
-  >
-    {#if focus}
-      <textarea
-        class="note__textarea"
-        bind:value
-        on:change={handleChange}
-        on:blur={handleBlur}
-        bind:this={textareaElement}
-      />
-    {:else}
-      {@html marked(value)}
-    {/if}
-  </div>
-</CardTemplate>
+<div
+  class="note"
+  style="--font: {font}; --font-color: {fontColor}; --font-size: {fontSize};"
+  on:mousedown={handleMousedown}
+>
+  {#if focus}
+    <textarea
+      class="note__textarea"
+      bind:value
+      on:change={handleChange}
+      on:blur={handleBlur}
+      bind:this={textareaElement}
+    />
+  {:else}
+    {@html marked(value)}
+  {/if}
+</div>
 
 <style>
   .note {

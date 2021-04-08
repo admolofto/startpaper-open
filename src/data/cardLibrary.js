@@ -37,6 +37,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 1, w: 1 },
     canResize: true,
+    display: { background: false },
     preview: { h: 1, w: 1, scale: 0.5 },
   },
   {
@@ -49,6 +50,7 @@ export const cardLibrary = [
     max: { h: 1, w: 1 },
     min: { h: 1, w: 1 },
     canResize: false,
+    display: { background: false },
     preview: { h: 1, w: 1, scale: 1 },
   },
   {
@@ -61,6 +63,7 @@ export const cardLibrary = [
     max: { h: 1, w: 1 },
     min: { h: 1, w: 1 },
     canResize: false,
+    display: { padding: true, background: true },
     preview: { h: 1, w: 1, scale: 1 },
   },
   {
@@ -73,6 +76,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 1, w: 1 },
     canResize: true,
+    display: { background: false },
     preview: { h: 2, w: 1, scale: 1 },
   },
   {
@@ -85,6 +89,7 @@ export const cardLibrary = [
     max: {},
     min: { h: 1, w: 1 },
     canResize: true,
+    display: { padding: true, overflow: true },
     preview: { h: 1.5, w: 1, scale: 1 },
   },
   {
@@ -97,6 +102,7 @@ export const cardLibrary = [
     max: { h: 8, w: 4 },
     min: { h: 2, w: 1 },
     canResize: true,
+    display: { padding: true, overflow: true },
     preview: { h: 3, w: 1, scale: 1 },
   },
   // {
@@ -133,6 +139,7 @@ export const cardLibrary = [
     max: { h: 8, w: 4 },
     min: { h: 2, w: 1 },
     canResize: true,
+    display: {},
     preview: { h: 2.5, w: 0.75, scale: 1 },
   },
 ];

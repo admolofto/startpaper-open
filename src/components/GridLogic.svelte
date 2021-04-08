@@ -14,11 +14,14 @@
 
   let gridContainer;
 
-  $: activePageIndex = $pages.findIndex(
+  $: pageIndex = $pages.findIndex(
     (item) => item.id === $activePage
   );
 
-  $: isLocked = $pages[activePageIndex].locked;
+  $: console.log(pageIndex);
+
+  $: isLocked = $pages[pageIndex]?.locked;
+
   const setIsLocked = (bool) => {
     isLocked = bool;
   };

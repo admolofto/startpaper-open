@@ -27,33 +27,31 @@
   };
 </script>
 
-<CardTemplate>
-  {#await promise}
-    <p>00° ...</p>
-  {:then data}
-    <a
-      class="weather"
-      href="https://openweathermap.org/city/{data.id}"
-    >
-      <div class="weather__location">
-        <div class="weather__location--icon">
-          <Icon icon="map-pin" size="12" />
-        </div>
-        <p class="weather__location--text">
-          {data.location}
-        </p>
+{#await promise}
+  <p>00° ...</p>
+{:then data}
+  <a
+    class="weather"
+    href="https://openweathermap.org/city/{data.id}"
+  >
+    <div class="weather__location">
+      <div class="weather__location--icon">
+        <Icon icon="map-pin" size="12" />
       </div>
-      <p class="weather__temp">{data.deg}°</p>
-      <img
-        class="weather__symbol"
-        src="http://openweathermap.org/img/wn/{data.icon}@2x.png"
-        alt="icon not found"
-      />
-    </a>
-  {:catch error}
-    <p>{error.message}</p>
-  {/await}
-</CardTemplate>
+      <p class="weather__location--text">
+        {data.location}
+      </p>
+    </div>
+    <p class="weather__temp">{data.deg}°</p>
+    <img
+      class="weather__symbol"
+      src="http://openweathermap.org/img/wn/{data.icon}@2x.png"
+      alt="icon not found"
+    />
+  </a>
+{:catch error}
+  <p>{error.message}</p>
+{/await}
 
 <style>
   .weather {

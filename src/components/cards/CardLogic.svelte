@@ -65,6 +65,7 @@
     {isDragging}
     {editmode}
     {cardId}
+    {cardName}
     {flippedCardId}
     {flipCard}
     {optionsFlippedCardId}
