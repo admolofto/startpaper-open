@@ -35,7 +35,7 @@
     min-height: 100%;
     width: max-content;
     padding: 1rem;
-    background: white;
+    background: var(--theme-colors-card);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
       0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 5px;

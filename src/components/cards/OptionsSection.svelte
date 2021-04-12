@@ -29,7 +29,7 @@
   .options-section__header {
     font-size: small;
     font-weight: 600;
-    color: darkslategray;
+    color: var(--theme-colors-text);
     margin-right: 0.25rem;
     width: 5rem;
     margin-bottom: 0.25rem;

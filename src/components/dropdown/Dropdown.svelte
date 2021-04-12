@@ -48,26 +48,17 @@
 {/if}
 
 <style>
-  .dropdown__outside {
-    position: fixed;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    cursor: default;
-  }
   .dropdown {
     position: absolute;
     display: flex;
     flex-direction: column;
     z-index: 100;
     width: 8rem;
-    background: white;
+    background: var(--theme-colors-card);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
       0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 5px;
-    border: 1px solid lightgrey;
+    border: 1px solid var(--theme-colors-border);
     padding: 0.25rem 0;
     overflow: visible;
   }

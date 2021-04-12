@@ -41,7 +41,7 @@
   }
   .dropdown-item--divider {
     width: 100%;
-    border-top: 1px solid rgba(220, 230, 230, 1);
+    border-top: 1px solid var(--theme-colors-border);
     margin: 0.25rem 0;
   }
 </style>

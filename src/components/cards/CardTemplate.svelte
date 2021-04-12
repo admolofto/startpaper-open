@@ -35,7 +35,7 @@
     overflow: hidden;
   }
   .background {
-    background: white;
+    background: var(--theme-colors-card);
   }
   .padding {
     padding: 1rem;

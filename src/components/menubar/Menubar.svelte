@@ -1,6 +1,8 @@
 <script>
   import Pagesbar from './Pagesbar.svelte';
   import MenubarButton from './MenubarButton.svelte';
+  import { ThemeToggle } from 'svelte-themer';
+  import SettingsDropdown from './SettingsDropdown.svelte';
 
   export let editmode, setEditmode, addmode, setAddmode;
 
@@ -36,6 +38,11 @@
           on:click={handleSettingsClick}
           icon="settings"
         />
+        <div class="menubar__settings--dropdown">
+          <div class="menubar__settings--dropdown--inner">
+            <SettingsDropdown />
+          </div>
+        </div>
       {/if}
       <MenubarButton
         on:click={handleEditmodeClick}
@@ -54,7 +61,7 @@
     width: 100%;
     padding: 1rem;
     z-index: 90;
-    background: rgba(251, 251, 252, 0.8);
+    background: var(--theme-colors-background);
   }
   .menubar__inner {
     position: relative;
@@ -69,5 +76,12 @@
   }
   .menubar__section-right {
     right: 0;
+  }
+
+  Fix rightside dropdown .menubar__settings--dropdown {
+    position: absolute;
+    overflow: visible;
+    width: 100%;
+    height: 100%;
   }
 </style>

@@ -26,6 +26,7 @@
     "sirv-cli": "^1.0.0",
     "svelte-loading-spinners": "^0.1.4",
     "svelte-range-slider-pips": "^1.7.0",
-    "svelte-select": "^3.17.0"
+    "svelte-select": "^3.17.0",
+    "svelte-themer": "^0.4.5"
   }
 }

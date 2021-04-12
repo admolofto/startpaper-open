@@ -12,9 +12,10 @@
 <style>
   .page-name {
     font-size: large;
-    color: darkgrey;
+    color: var(--theme-colors-page-active);
+    opacity: 0.5;
   }
   .page-name--active {
-    color: black;
+    opacity: 1;
   }
 </style>

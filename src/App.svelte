@@ -1,17 +1,19 @@
 <script>
   import Paper from './components/Paper.svelte';
+  import { ThemeWrapper } from 'svelte-themer';
+  import { themes } from './themes';
 </script>
 
-<div>
+<ThemeWrapper {themes}>
   <Paper />
-</div>
+</ThemeWrapper>
 
 <style>
   :global(body) {
-    background: rgb(251, 251, 252);
+    background: var(--theme-colors-background);
   }
 
-  :global(h1, h2, h3) {
-    color: var(--header-color);
+  :global(h1, h2, h3, p) {
+    color: var(--theme-colors-text);
   }
 </style>

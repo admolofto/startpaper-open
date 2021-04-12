@@ -143,6 +143,9 @@
 </svg>
 
 <style>
+  .icon {
+    stroke: var(--theme-colors-text);
+  }
   .icon--opacity {
     opacity: 0.2;
   }

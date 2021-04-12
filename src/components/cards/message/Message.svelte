@@ -9,7 +9,6 @@
 
   $: font = $cardStore.font;
   $: fontSize = $cardStore.fontSize;
-  $: fontColor = $cardStore.fontColor;
 
   $: message = 'Good Evening';
 
@@ -41,7 +40,7 @@
 <div class={`message`}>
   <h1
     class="message__text"
-    style="--font-size: {fontSize}; --font-color: {fontColor}; --font: {font};"
+    style="--font-size: {fontSize}; --font: {font};"
   >
     {message}
   </h1>
@@ -58,7 +57,6 @@
   .message__text {
     text-align: center;
     font-size: var(--font-size);
-    color: var(--font-color);
     font-family: var(--font);
     line-height: 2.5rem;
   }

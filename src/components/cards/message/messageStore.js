@@ -5,7 +5,6 @@ export const createMessageStore = (cardId) => {
     isCustomMessage: false,
     customMessage: 'Good Evening',
     font: 'serif',
-    fontColor: 'black',
     fontSize: '44px',
     messageOption: 'greeting',
     backgroundImg:
@@ -27,12 +26,6 @@ export const createMessageStore = (cardId) => {
   const setFont = (newFont) => {
     update((prev) => {
       return { ...prev, font: newFont };
-    });
-  };
-
-  const setFontColor = (newFontColor) => {
-    update((prev) => {
-      return { ...prev, fontColor: newFontColor };
     });
   };
 
@@ -59,7 +52,6 @@ export const createMessageStore = (cardId) => {
     set,
     update,
     setFont,
-    setFontColor,
     setFontSize,
     setBackgroundImg,
     setMessageOption,

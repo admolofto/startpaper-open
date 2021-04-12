@@ -3,6 +3,7 @@
   import { layouts } from '../stores/layoutsStore';
   import { fly } from 'svelte/transition';
   import { quintInOut } from 'svelte/easing';
+  import CardTemplate from './cards/CardTemplate.svelte';
 
   export let addmode;
 
@@ -39,11 +40,14 @@
             class="cardbar__card--button"
             on:click={() => handleCardClick(card)}
           />
-          <svelte:component
-            this={card.cardFront}
-            cardStore={card.createCardStore()}
-            cardId={cardIndex}
-          />
+          <CardTemplate padding={card.display.padding}>
+            <svelte:component
+              this={card.cardFront}
+              cardStore={card.createCardStore()}
+              cardId={cardIndex}
+            />
+          </CardTemplate>
+
           <h1 class="cardbar__card--name">{card.name}</h1>
         </div>
       </div>
@@ -58,10 +62,19 @@
     z-index: 99;
     padding: 1rem;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.5);
-    width: 225px;
+    width: 240px;
     overflow-y: scroll;
     height: calc(100vh - 4rem);
+  }
+  .cardbar:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: var(--theme-colors-background);
+    opacity: 0.5;
   }
   .cardbar__card--container {
     margin: 2rem 0 4rem 0;

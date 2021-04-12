@@ -11,35 +11,20 @@
     page;
   let iconSize = '18';
 
-  const handleRenameClick = () => {
+  const handleAppearanceClick = () => {
     setIsRenaming(true);
-  };
-  const handleDeleteClick = () => {
-    pages.deletePage(pageIndex, page.id);
-  };
-  const handleLockClick = () => {
-    setIsLocking(true);
   };
 </script>
 
 <Dropdown {showDropdown} {setShowDropdown}>
   <DropdownItem
-    on:click={handleLockClick}
-    icon="lock"
-    text="Lock"
+    on:click={handleAppearanceClick}
+    text="Appearance"
   />
+  <DropdownItem divider={true} />
   <DropdownItem
-    on:click={handleRenameClick}
-    icon="rename"
-    text="Rename"
+    icon="trashcan"
+    text="Delete"
+    iconColor="red"
   />
-  {#if $pages.length > 1}
-    <DropdownItem divider={true} />
-    <DropdownItem
-      icon="trashcan"
-      text="Delete"
-      iconColor="red"
-      on:click={handleDeleteClick}
-    />
-  {/if}
 </Dropdown>

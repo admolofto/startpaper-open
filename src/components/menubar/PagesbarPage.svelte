@@ -166,7 +166,6 @@
   .page-item__dropdown-options {
     top: 2rem;
   }
-
   .page-item__dropdown-input {
     top: 1rem;
   }
