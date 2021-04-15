@@ -1,6 +1,5 @@
 <script>
   import marked from 'marked';
-  import CardTemplate from '../CardTemplate.svelte';
 
   export let cardStore, cardId;
 
@@ -10,7 +9,6 @@
 
   $: font = $cardStore.font || 'serif';
   $: fontSize = $cardStore.fontSize;
-  $: fontColor = $cardStore.fontColor;
 
   const handleMousedown = () => {
     focus = true;
@@ -30,7 +28,7 @@
 
 <div
   class="note"
-  style="--font: {font}; --font-color: {fontColor}; --font-size: {fontSize};"
+  style="--font: {font}; --font-size: {fontSize};"
   on:mousedown={handleMousedown}
 >
   {#if focus}
@@ -51,8 +49,8 @@
     width: 100%;
     height: 100%;
     font-family: var(--font);
-    color: var(--font-color);
     font-size: var(--font-size);
+    color: var(--theme-colors-text)
   }
   :global(.note h1) {
     font-size: 120%;

@@ -1,19 +1,32 @@
 <script>
-  import Icon from '../Icon.svelte';
+  import App from "../../App.svelte";
+  import Icon from "../Icon.svelte";
+  import Toggle from "../Toggle.svelte";
 
-  export let icon = '',
-    iconColor = 'black',
-    text = '',
-    divider = false;
+  export let icon = "",
+    iconColor = "black",
+    text = "",
+    divider = false,
+    header = false,
+    toggle = false,
+    toggleStatus = false;
 
-  let iconSize = '20';
+  let iconSize = "20";
 </script>
 
-{#if !divider}
-  <button
-    class="dropdown-item text-left hover:bg-gray-100 text-sm"
-    on:click
-  >
+{#if divider}
+  <div class="dropdown-item--divider" />
+{:else if header}
+  <div class="dropdown-item--header">
+    <h1>{text}</h1>
+  </div>
+{:else if toggle}
+  <button class="dropdown-item dropdown-item--toggle" on:click>
+    <p>{text}</p>
+    <Toggle {toggleStatus} />
+  </button>
+{:else}
+  <button class="dropdown-item" on:click>
     <div class="dropdown-item__icon">
       <Icon {icon} size={iconSize} color={iconColor} />
     </div>
@@ -21,8 +34,6 @@
       {text}
     </p>
   </button>
-{:else}
-  <div class="dropdown-item--divider" />
 {/if}
 
 <style>
@@ -32,9 +43,11 @@
     padding: 0 0.25rem;
     height: 2rem;
     width: 100%;
+    padding: 0 0.5rem;
+    cursor: pointer;
   }
   .dropdown-item:hover {
-    background: rgba(220, 230, 230, 1);
+    background: var(--theme-colors-hover);
   }
   .dropdown-item__icon {
     width: 2rem;
@@ -43,5 +56,13 @@
     width: 100%;
     border-top: 1px solid var(--theme-colors-border);
     margin: 0.25rem 0;
+  }
+  .dropdown-item--header {
+    padding-left: 0.5rem;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .dropdown-item--toggle {
+    justify-content: space-between;
   }
 </style>

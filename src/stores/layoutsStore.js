@@ -111,6 +111,18 @@ const setCardLock = (cardId, bool) => {
   });
 };
 
+const fixCard = (cardId) => {
+  update((prev) => {
+    let cardIndex = returnCardIndexForActivePage(cardId)
+    let newCard = { ...prev[activePageValue][cardIndex] }
+    colsList.forEach((col) => {
+      newCard[col[1]] = { ...newCard[col[1]], fixed: !newCard[col[1]].fixed }
+    })
+    prev[activePageValue][cardIndex] = newCard
+    return prev
+  })
+}
+
 const addCard = (card) => {
   update((prev) => {
     let newCard = {
@@ -129,6 +141,7 @@ const addCard = (card) => {
         max: card.max,
         draggable: true,
         resizable: card.canResize,
+        fixed: true,
       });
     });
 
@@ -204,4 +217,5 @@ export const layouts = {
   removeCard,
   getCardLayout,
   returnCardIndex,
+  fixCard,
 };

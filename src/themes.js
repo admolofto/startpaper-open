@@ -1,5 +1,5 @@
 export const themes = {
-  light: {
+  Light: {
     colors: {
       text: '#282230',
       background: {
@@ -17,9 +17,13 @@ export const themes = {
       border: {
         _: '#d5d5d5',
       },
+      hover: {
+        _: '#D5D5D5',
+        alt: '#f8fbfc',
+      }
     },
   },
-  dark: {
+  Dark: {
     colors: {
       text: '#f1f1f1',
       background: {
@@ -37,6 +41,10 @@ export const themes = {
       border: {
         _: '#514d56',
       },
+      hover: {
+        _: '#141118',
+        alt: '#241d2d',
+      }
     },
   },
 };

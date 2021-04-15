@@ -1,6 +1,5 @@
 <script>
   import Icon from '../../Icon.svelte';
-  import CardTemplate from '../CardTemplate.svelte';
 
   const apiKey = '6f61d621adc291e9601e23286e428163';
 
@@ -62,6 +61,10 @@
     grid-template-areas:
       'location location'
       'temp symbol';
+    border-radius: 5px;
+  }
+  .weather:hover {
+    background: var(--theme-colors-hover-alt)
   }
   .weather__location {
     grid-area: location;

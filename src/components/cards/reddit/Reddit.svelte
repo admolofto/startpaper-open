@@ -148,6 +148,11 @@
   }
   .post-title {
     font-size: 1rem;
+    border-radius: 5px;
+    width: fit-content;
+  }
+  .post-title:hover {
+    background: var(--theme-colors-hover-alt)
   }
   .post-domain {
     color: slategray;
@@ -157,6 +162,11 @@
   .post-sub {
     font-weight: bold;
     font-size: 0.8rem;
+    border-radius: 5px;
+    width: fit-content;
+  }
+  .post-sub:hover {
+    background: var(--theme-colors-hover-alt)
   }
   .post-ups {
     display: flex;
@@ -166,7 +176,12 @@
     margin-right: 0.5rem;
   }
   .ups-comments-container {
+    width: fit-content;
     display: flex;
+    border-radius: 5px;
+  }
+  .ups-comments-container:hover {
+    background: var(--theme-colors-hover-alt)
   }
   .line-clamp {
     display: -webkit-box;

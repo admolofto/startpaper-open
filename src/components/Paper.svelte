@@ -4,6 +4,7 @@
   import Cardbar from './Cardbar.svelte';
   import { layouts } from '../stores/layoutsStore';
   import { userInfo } from '../stores/userInfoStore';
+import { onMount } from 'svelte';
 
   let editmode = false;
   let addmode = false;
@@ -25,6 +26,10 @@
       seconds: d.getSeconds(),
     });
   };
+
+  onMount(() => {
+    layouts.toggleEditmode(editmode)
+  })
 
   setInterval(() => {
     updateTime();

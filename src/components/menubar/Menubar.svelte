@@ -6,6 +6,11 @@
 
   export let editmode, setEditmode, addmode, setAddmode;
 
+  let showSettings = false
+  const setShowSettings = (bool) => {
+    showSettings = bool
+  }
+
   const handleEditmodeClick = () => {
     setEditmode(!editmode);
   };
@@ -14,7 +19,9 @@
     setAddmode(!addmode);
   };
 
-  const handleSettingsClick = () => {};
+  const handleSettingsClick = () => {
+    setShowSettings(true)
+  };
 </script>
 
 <div class="menubar">
@@ -39,9 +46,7 @@
           icon="settings"
         />
         <div class="menubar__settings--dropdown">
-          <div class="menubar__settings--dropdown--inner">
-            <SettingsDropdown />
-          </div>
+          <SettingsDropdown showDropdown={showSettings} setShowDropdown={setShowSettings} />
         </div>
       {/if}
       <MenubarButton
@@ -78,10 +83,9 @@
     right: 0;
   }
 
-  Fix rightside dropdown .menubar__settings--dropdown {
+  .menubar__settings--dropdown {
     position: absolute;
-    overflow: visible;
-    width: 100%;
-    height: 100%;
+    height: 30px;
+    width: 30px;
   }
 </style>

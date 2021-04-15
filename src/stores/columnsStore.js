@@ -11,7 +11,9 @@ const { subscribe, set, update } = writable(
       [700, 3],
       [375, 2],
     ],
+    staticColumns: 5,
     currentColumn: 0,
+    dynamic: true,
   }
 );
 
@@ -27,7 +29,21 @@ const setCurrentColumn = (newCurrentColumn) => {
   });
 };
 
+const setDynamic = (bool) => {
+  update((prev) => {
+    return { ...prev, dynamic: bool }
+  })
+}
+
+const setStaticColumns = (numOfCols) => {
+  update((prev) => {
+    return { ...prev, staticColumns: numOfCols }
+  })
+}
+
 export const columns = {
   subscribe,
   setCurrentColumn,
+  setDynamic,
+  setStaticColumns,
 };

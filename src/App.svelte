@@ -4,7 +4,7 @@
   import { themes } from './themes';
 </script>
 
-<ThemeWrapper {themes}>
+<ThemeWrapper {themes} mode='light'>
   <Paper />
 </ThemeWrapper>
 

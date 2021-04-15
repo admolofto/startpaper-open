@@ -112,7 +112,7 @@
       icon="chevron-down"
       size="20"
       style={{
-        hoverBackground: 'white',
+        alt: true,
         borderRadius: '50%',
       }}
       on:click={handlePageItemOptionsClick}

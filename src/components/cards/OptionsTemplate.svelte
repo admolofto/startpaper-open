@@ -8,6 +8,10 @@
     flipCard(cardId);
     layouts.removeCard(cardId);
   };
+
+  const handleFixCard = () => {
+    layouts.fixCard(cardId)
+  }
 </script>
 
 <div
@@ -18,9 +22,14 @@
     <h1 class="options-template__header--title">
       {cardName}
     </h1>
-    <button on:click={handleRemoveClick}>
-      <Icon icon="trashcan" size="25" color="red" />
-    </button>
+    <div>
+      <!-- <button on:click={handleFixCard}>
+        <Icon icon="unlock" size="25" />
+      </button> -->
+      <button on:click={handleRemoveClick}>
+        <Icon icon="trashcan" size="25" color="red" />
+      </button>
+    </div>
   </div>
 
   <div class="options-template__options-slot">

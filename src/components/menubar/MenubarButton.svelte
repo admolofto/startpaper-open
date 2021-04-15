@@ -6,14 +6,15 @@
     opacity = false,
     activeIcon = '',
     style = {
-      hoverBackground: 'rgba(220, 230, 230, 1)',
       borderRadius: '5px',
+      alt: false
     };
 </script>
 
 <button
   class="menubar__button"
-  style="--border-radius: {style.borderRadius}; --hover-background: {style.hoverBackground};"
+  class:alt-style={style.alt}
+  style="--border-radius: {style.borderRadius};"
   on:click
 >
   {#if !isActive}
@@ -31,6 +32,10 @@
     height: fit-content;
   }
   .menubar__button:hover {
-    background: var(--hover-background);
+    background: var(--theme-colors-hover);
   }
+  .alt-style:hover {
+    background: var(--theme-colors-hover-alt)
+  }
+
 </style>

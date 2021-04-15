@@ -13,6 +13,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       7: item({
         x: 2,
@@ -21,6 +22,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       6: item({
         x: 2,
@@ -29,6 +31,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       5: item({
         x: 1,
@@ -37,6 +40,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       4: item({
         x: 1,
@@ -45,6 +49,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       3: item({
         x: 0,
@@ -53,6 +58,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       2: item({
         x: 0,
@@ -61,6 +67,7 @@ export const initialLayouts = {
         h: 1,
         resizable: false,
         draggable: false,
+        fixed: true,
       }),
       name: 'Message',
       canResize: true,

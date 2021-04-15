@@ -68,6 +68,6 @@
     cursor: pointer !important;
   }
   .drag-menu__drag-item:hover {
-    background: rgba(220, 230, 230, 1);
+    background: var(--theme-colors-hover);
   }
 </style>
