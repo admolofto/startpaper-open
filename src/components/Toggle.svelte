@@ -1,11 +1,12 @@
 <script>
+    import { flip } from "svelte/animate";
     export let toggleStatus = false;
 </script>
 
 <div class="toggle" class:toggleStatus>
-    {#key toggleStatus}
-        <div class="toggle__switch" />
-    {/key}
+    {#each [toggleStatus] as k (k)}
+        <div class="toggle__switch" animate:flip />
+    {/each}
 </div>
 
 <style>

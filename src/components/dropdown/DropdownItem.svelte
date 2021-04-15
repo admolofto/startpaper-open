@@ -1,7 +1,7 @@
 <script>
   import App from "../../App.svelte";
   import Icon from "../Icon.svelte";
-  import Toggle from "../Toggle.svelte";
+  import Toggle from "svelte-toggle";
 
   export let icon = "",
     iconColor = "black",
@@ -23,7 +23,7 @@
 {:else if toggle}
   <button class="dropdown-item dropdown-item--toggle" on:click>
     <p>{text}</p>
-    <Toggle {toggleStatus} />
+    <Toggle toggled={toggleStatus} small hideLabel />
   </button>
 {:else}
   <button class="dropdown-item" on:click>

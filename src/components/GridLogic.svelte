@@ -25,11 +25,26 @@
   const rowHeight = 130;
   const gap = [10, 10];
 
-  $: cols = $columns.dynamic;
-  $: if ($columns.dynamic) {
-    cols = $columns.column;
-  } else {
-    cols = [375, $columns.staticColumns];
+  $: staticWidth = "1040px";
+  $: cols = $columns.columns;
+
+  $: if (!$columns.dynamic) {
+    let staticCols = $columns.staticColumns;
+    if (staticCols === 2) {
+      staticWidth = "375px";
+    } else if (staticCols === 3) {
+      staticWidth = "700px";
+    } else if (staticCols === 4) {
+      staticWidth = "870px";
+    } else if (staticCols === 5) {
+      staticWidth = "1040px";
+    } else if (staticCols === 6) {
+      staticWidth = "1210px";
+    } else if (staticCols === 7) {
+      staticWidth = "1380px";
+    } else if (staticCols === 8) {
+      staticWidth = "1550px";
+    }
   }
 
   $: items = $layouts[$activePage];
@@ -69,19 +84,21 @@
   };
 
   onMount(async () => {
-    let resObs = new ResizeObserver((e) => {
-      let width = e[0].contentRect.width;
-      let currentCol;
-      cols.forEach((col) => {
-        if (width === col[0]) {
-          currentCol = col[1];
+    if ($columns.dynamic) {
+      let resObs = new ResizeObserver((e) => {
+        let width = e[0].contentRect.width;
+        let currentCol;
+        cols.forEach((col) => {
+          if (width === col[0]) {
+            currentCol = col[1];
+          }
+        });
+        columns.setCurrentColumn(currentCol);
+        if (flippedCardId !== "") {
+          flipCard(flippedCardId);
         }
-      });
-      columns.setCurrentColumn(currentCol);
-      if (flippedCardId !== "") {
-        flipCard(flippedCardId);
-      }
-    }).observe(gridContainer);
+      }).observe(gridContainer);
+    }
   });
 </script>
 
@@ -95,6 +112,8 @@
   <div
     class="grid"
     class:grid-dynamic={$columns.dynamic}
+    class:grid-static={!$columns.dynamic}
+    style="--static-width: {staticWidth}"
     bind:this={gridContainer}
   >
     {#if !isLocked}
@@ -168,6 +187,8 @@
   }
   .grid {
     flex: none;
+  }
+  .grid-static {
     width: var(--static-width);
   }
   :global(.svlt-grid-active) {
