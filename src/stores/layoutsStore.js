@@ -6,7 +6,7 @@ import { columns } from './columnsStore';
 
 const { subscribe, set, update } = writable(
   JSON.parse(localStorage.getItem('layouts')) ||
-    initialLayouts
+  initialLayouts
 );
 
 let layoutsValue;
@@ -208,6 +208,7 @@ const returnCardIndex = (cardId) => {
 
 export const layouts = {
   subscribe,
+  set,
   updateLayout,
   addLayout,
   toggleEditmode,

@@ -41,9 +41,23 @@ const setStaticColumns = (numOfCols) => {
   })
 }
 
+const incrementStaticColumns = () => {
+  update((prev) => {
+    return { ...prev, staticColumns: prev.staticColumns + 1 }
+  })
+}
+
+const decrementStaticColumns = () => {
+  update((prev) => {
+    return { ...prev, staticColumns: prev.staticColumns - 1 }
+  })
+}
+
 export const columns = {
   subscribe,
   setCurrentColumn,
   setDynamic,
   setStaticColumns,
+  incrementStaticColumns,
+  decrementStaticColumns,
 };

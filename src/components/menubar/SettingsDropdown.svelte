@@ -4,6 +4,7 @@
   import { userInfo } from "../../stores/userInfoStore";
   import { themeName } from "../../stores/themeNameStore";
   import { columns } from "../../stores/columnsStore";
+  import { layouts } from "../../stores/layoutsStore";
 
   let { toggle, current, theme } = getContext("theme");
 
@@ -23,10 +24,16 @@
       function: cycleTheme,
     },
     {
+      text: "Custom scrollbar",
+      toggle: true,
+      toggleStatus: $columns.dynamic,
+      function: toggleColumns,
+    },
+    {
       divider: true,
     },
     {
-      text: "Columns",
+      text: "Layout",
       header: true,
     },
     {
@@ -34,6 +41,23 @@
       toggle: true,
       toggleStatus: $columns.dynamic,
       function: toggleColumns,
+    },
+    {
+      text: "Columns",
+      numberPicker: true,
+      hide: $columns.dynamic,
+    },
+    {
+      text: "Import",
+      icon: "table-import",
+      iconColor: "black",
+      function: openFileBrowser,
+    },
+    {
+      text: "Export",
+      icon: "file-export",
+      iconColor: "black",
+      function: exportLayouts,
     },
   ];
 
@@ -69,6 +93,45 @@
       themeIcon = "sun-half";
     }
   };
+
+  const exportLayouts = () => {
+    let dataStr = JSON.stringify($layouts);
+    let dataUri =
+      "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+
+    let exportFileDefaultName = "startpaper.json";
+
+    let linkElement = document.createElement("a");
+    linkElement.setAttribute("href", dataUri);
+    linkElement.setAttribute("download", exportFileDefaultName);
+    linkElement.click();
+  };
+
+  const openFileBrowser = () => {
+    document.getElementById("file1").click();
+  };
+
+  const handleFileInputChange = () => {
+    const selectedFile = document.getElementById("file1").files[0];
+    let reader = new FileReader();
+    reader.onload = (e) => {
+      console.log(JSON.parse(e.target.result));
+      layouts.set(JSON.parse(e.target.result));
+    };
+    reader.readAsText(selectedFile);
+  };
 </script>
 
-<Dropdown {showDropdown} {setShowDropdown} rightside={true} {dropdownOptions} />
+<Dropdown
+  {showDropdown}
+  {setShowDropdown}
+  rightside={true}
+  {dropdownOptions}
+  width={"12rem"}
+/>
+<input
+  type="file"
+  id="file1"
+  style="display: none;"
+  on:change={handleFileInputChange}
+/>

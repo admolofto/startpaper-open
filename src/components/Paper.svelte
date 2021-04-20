@@ -1,13 +1,17 @@
 <script>
-  import GridLogic from './GridLogic.svelte';
-  import Menubar from './menubar/Menubar.svelte';
-  import Cardbar from './Cardbar.svelte';
-  import { layouts } from '../stores/layoutsStore';
-  import { userInfo } from '../stores/userInfoStore';
-import { onMount } from 'svelte';
+  import GridLogic from "./GridLogic.svelte";
+  import Menubar from "./menubar/Menubar.svelte";
+  import Cardbar from "./Cardbar.svelte";
+  import { layouts } from "../stores/layoutsStore";
+  import { userInfo } from "../stores/userInfoStore";
+  import { onMount } from "svelte";
 
   let editmode = false;
   let addmode = false;
+
+  $: if (!editmode) {
+    addmode = false;
+  }
 
   const setEditmode = (bool) => {
     editmode = bool;
@@ -28,8 +32,8 @@ import { onMount } from 'svelte';
   };
 
   onMount(() => {
-    layouts.toggleEditmode(editmode)
-  })
+    layouts.toggleEditmode(editmode);
+  });
 
   setInterval(() => {
     updateTime();

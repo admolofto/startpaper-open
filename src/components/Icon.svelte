@@ -142,6 +142,30 @@
     <path d="M13 18h1" />
     <path d="M13 9h4" />
     <path d="M13 6h1" />
+  {:else if icon === "chevron-left"}
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <polyline points="15 6 9 12 15 18" />
+  {:else if icon === "chevron-right"}
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <polyline points="9 6 15 12 9 18" />
+  {:else if icon === "plus"}
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  {:else if icon === "minus"}
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  {:else if icon === "file-export"}
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+    <path
+      d="M11.5 21h-4.5a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v5m-5 6h7m-3 -3l3 3l-3 3"
+    />
+  {:else if icon === "table-import"}
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path
+      d="M4 13.5v-7.5a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-6m-8 -10h16m-10 -6v11.5m-8 3.5h7m-3 -3l3 3l-3 3"
+    />
   {:else}
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
     <path d="M14 3v4a1 1 0 0 0 1 1h4" />

@@ -11,15 +11,18 @@
         header: false,
         toggle: false,
         toggleStatus: false,
+        numberPicker: false,
         text: "text",
         icon: "icon",
         iconColor: "black",
         function: () => {},
+        hide: false,
       },
     ],
     setShowDropdown = () => {},
     handleOutsideClick = () => setShowDropdown(false),
-    rightside = false;
+    rightside = false,
+    width = "8rem";
 </script>
 
 {#if showDropdown}
@@ -27,28 +30,41 @@
     renderOutsideArea={showDropdown}
     on:click={handleOutsideClick}
   />
-  <div class="dropdown" class:rightside class:dropdown-input={type === "input"}>
+  <div
+    class="dropdown"
+    class:rightside
+    class:dropdown-input={type === "input"}
+    style="--width: {width}"
+  >
     {#if type === "options"}
       {#each dropdownOptions as option}
-        {#if option.header}
-          <DropdownItem header={true} text={option.text} />
-        {:else if option.divider}
-          <DropdownItem divider={true} />
-        {:else if option.toggle}
-          <DropdownItem
-            toggle={true}
-            text={option.text}
-            onClick={option.function}
-            toggleStatus={option.toggleStatus}
-            on:click={() => option.function()}
-          />
-        {:else}
-          <DropdownItem
-            on:click={() => option.function()}
-            text={option.text}
-            icon={option.icon}
-            iconColor={option.iconColor}
-          />
+        {#if !option.hide}
+          {#if option.header}
+            <DropdownItem header={true} text={option.text} />
+          {:else if option.divider}
+            <DropdownItem divider={true} />
+          {:else if option.toggle}
+            <DropdownItem
+              toggle={true}
+              text={option.text}
+              onClick={option.function}
+              toggleStatus={option.toggleStatus}
+              on:click={() => option.function()}
+            />
+          {:else if option.numberPicker}
+            <DropdownItem
+              numberPicker={true}
+              text={option.text}
+              noHover={true}
+            />
+          {:else}
+            <DropdownItem
+              on:click={() => option.function()}
+              text={option.text}
+              icon={option.icon}
+              iconColor={option.iconColor}
+            />
+          {/if}
         {/if}
       {/each}
     {:else}
@@ -63,7 +79,7 @@
     display: flex;
     flex-direction: column;
     z-index: 100;
-    width: 8rem;
+    width: var(--width);
     background: var(--theme-colors-card);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 5px;
