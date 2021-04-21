@@ -5,6 +5,7 @@ const { subscribe, set, update } = writable(
     city: 'atlanta',
     time: { hours: '00', minutes: '00', seconds: '00' },
     date: '',
+    customScrollbars: false,
   }
 );
 
@@ -32,9 +33,16 @@ const setDate = (newDate) => {
   });
 };
 
+const toggleCustomScrollbars = () => {
+  update((prev) => {
+    return { ...prev, customScrollbars: !prev.customScrollbars }
+  })
+}
+
 export const userInfo = {
   subscribe,
   setCity,
   setTime,
   setDate,
+  toggleCustomScrollbars,
 };

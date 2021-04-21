@@ -24,10 +24,10 @@
       function: cycleTheme,
     },
     {
-      text: "Custom scrollbar",
+      text: "Custom scrollbars",
       toggle: true,
-      toggleStatus: $columns.dynamic,
-      function: toggleColumns,
+      toggleStatus: $userInfo.customScrollbars,
+      function: toggleCustomScrollbar,
     },
     {
       divider: true,
@@ -63,6 +63,10 @@
 
   const toggleColumns = () => {
     columns.setDynamic(!$columns.dynamic);
+  };
+
+  const toggleCustomScrollbar = () => {
+    userInfo.toggleCustomScrollbars();
   };
 
   const setTheme = (newTheme) => {
