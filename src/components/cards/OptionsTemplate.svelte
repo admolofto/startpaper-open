@@ -1,6 +1,6 @@
 <script>
-  import { layouts } from '../../stores/layoutsStore';
-  import Icon from '../Icon.svelte';
+  import { layouts } from "../../stores/layoutsStore";
+  import Icon from "../Icon.svelte";
 
   export let cardId, cardName, flipCard, isCardInLastColumn;
 
@@ -8,24 +8,14 @@
     flipCard(cardId);
     layouts.removeCard(cardId);
   };
-
-  const handleFixCard = () => {
-    layouts.fixCard(cardId)
-  }
 </script>
 
-<div
-  class="options-template"
-  class:last-column={isCardInLastColumn}
->
+<div class="options-template" class:last-column={isCardInLastColumn}>
   <div class="options-template__header">
     <h1 class="options-template__header--title">
       {cardName}
     </h1>
     <div>
-      <!-- <button on:click={handleFixCard}>
-        <Icon icon="unlock" size="25" />
-      </button> -->
       <button on:click={handleRemoveClick}>
         <Icon icon="trashcan" size="25" color="red" />
       </button>
@@ -45,8 +35,7 @@
     width: max-content;
     padding: 1rem;
     background: var(--theme-colors-card);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
-      0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     border-radius: 5px;
   }
   .options-template__header {

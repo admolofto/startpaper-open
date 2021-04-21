@@ -12,7 +12,8 @@
     toggle = false,
     toggleStatus = false,
     noHover = false,
-    numberPicker = false;
+    numberPicker = false,
+    textInfo = false;
 
   let iconSize = "20";
 </script>
@@ -36,6 +37,10 @@
   <div class="dropdown-item dropdown-item--toggle" class:hover={!noHover}>
     <p>{text}</p>
     <InputNumberPicker />
+  </div>
+{:else if textInfo}
+  <div class="dropdown-item">
+    <p class="dropdown-item__text-info">{text}</p>
   </div>
 {:else}
   <button class="dropdown-item" class:hover={!noHover} on:click>
@@ -75,5 +80,9 @@
   }
   .dropdown-item--toggle {
     justify-content: space-between;
+  }
+  .dropdown-item__text-info {
+    font-size: 12px;
+    color: grey;
   }
 </style>

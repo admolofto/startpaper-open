@@ -1,11 +1,11 @@
 <script>
-  import CardDisplay from './CardDisplay.svelte';
-  import { cardLibrary } from '../../data/cardLibrary';
-  import DetectDrag from './DetectDrag.svelte';
-  import OptionsTemplate from './OptionsTemplate.svelte';
-  import { columns } from '../../stores/columnsStore';
-  import { layouts } from '../../stores/layoutsStore';
-  import { activePage } from '../../stores/activePageStore';
+  import CardDisplay from "./CardDisplay.svelte";
+  import { cardLibrary } from "../../data/cardLibrary";
+  import DetectDrag from "./DetectDrag.svelte";
+  import OptionsTemplate from "./OptionsTemplate.svelte";
+  import { columns } from "../../stores/columnsStore";
+  import { layouts } from "../../stores/layoutsStore";
+  import { activePage } from "../../stores/activePageStore";
 
   export let cardId,
     cardName,
@@ -20,26 +20,19 @@
 
   const cardFront = cardLibrary[cardLibraryIndex].cardFront;
   const cardOpts = cardLibrary[cardLibraryIndex].cardOpts;
-  const cardStore = cardLibrary[
-    cardLibraryIndex
-  ].createCardStore(cardId);
+  const cardStore = cardLibrary[cardLibraryIndex].createCardStore(cardId);
   $: isCardFlipped = flippedCardId === cardId;
 
   $: cardIndex = layouts.returnCardIndex(cardId);
   $: cardPosX = -1;
-  $: if (
-    $columns.currentColumn &&
-    $layouts[$activePage][cardIndex]
-  ) {
-    cardPosX =
-      $layouts[$activePage][cardIndex][
-        $columns.currentColumn
-      ].x;
+  $: if ($columns.currentColumn && $layouts[$activePage][cardIndex]) {
+    cardPosX = $layouts[$activePage][cardIndex][$columns.currentColumn].x;
   }
 
   $: isCardInLastColumn = false;
 
   const checkIfCardInLastColumn = (posX) => {
+    console.log($columns.currentColumn);
     let currentColumn = $columns.currentColumn;
     isCardInLastColumn = posX === currentColumn - 1;
   };
@@ -82,12 +75,7 @@
       {/if}
     </div>
     <div class="card-logic__slot" slot="back">
-      <OptionsTemplate
-        {cardId}
-        {cardName}
-        {flipCard}
-        {isCardInLastColumn}
-      >
+      <OptionsTemplate {cardId} {cardName} {flipCard} {isCardInLastColumn}>
         <svelte:component
           this={cardOpts}
           {cardStore}

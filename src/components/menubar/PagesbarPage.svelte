@@ -1,17 +1,14 @@
 <script>
-  import { activePage } from '../../stores/activePageStore';
-  import { pages } from '../../stores/pagesStore';
-  import MenubarButton from './MenubarButton.svelte';
-  import PagesbarPageName from './PagesbarPageName.svelte';
-  import Dropdown from '../dropdown/Dropdown.svelte';
-  import InputText from '../inputs/InputText.svelte';
-  import PageDropdownSetLock from './PagesbarPageDropdownLock.svelte';
+  import { activePage } from "../../stores/activePageStore";
+  import { pages } from "../../stores/pagesStore";
+  import MenubarButton from "./MenubarButton.svelte";
+  import PagesbarPageName from "./PagesbarPageName.svelte";
+  import Dropdown from "../dropdown/Dropdown.svelte";
+  import InputText from "../inputs/InputText.svelte";
+  import PageDropdownSetLock from "./PagesbarPageDropdownLock.svelte";
+  import PagesbarDnD from "./PagesbarDnD.svelte";
 
-  export let page,
-    pageIndex,
-    editmode,
-    newlyAddedPageId,
-    setNewlyAddedPageId;
+  export let page, pageIndex, editmode, newlyAddedPageId, setNewlyAddedPageId;
 
   $: isActivePage = page.id === $activePage;
 
@@ -43,7 +40,7 @@
   $: if (newlyAddedPageId === page.id) {
     setTimeout(() => {
       setIsRenaming(true);
-      setNewlyAddedPageId('');
+      setNewlyAddedPageId("");
     }, 200);
   }
 
@@ -55,56 +52,48 @@
     setShowDropdown(true);
   };
 
-  $: dropdownOptions = [];
-
-  $: dropdownOptionsDefault = [
+  $: dropdownOptions = [
     {
-      text: isPageLocked ? 'Unlock' : 'Lock',
-      icon: isPageLocked ? 'unlock' : 'lock',
+      text: isPageLocked ? "Unlock" : "Lock",
+      icon: isPageLocked ? "unlock" : "lock",
       function: () => {
         setIsLocking(true);
       },
     },
     {
-      text: 'Rename',
-      icon: 'rename',
+      text: "Rename",
+      icon: "rename",
       function: () => {
         setIsRenaming(true);
       },
     },
-  ];
-
-  $: dropdownOptionsDelete = [
-    { divider: true },
     {
-      text: 'Delete',
-      icon: 'trashcan',
-      iconColor: 'red',
+      divider: true,
+      hide: $pages.length === 1,
+    },
+    {
+      text: "Delete",
+      icon: "trashcan",
+      iconColor: "red",
       function: () => {
         pages.removePage(pageIndex, page.id);
       },
+      hide: $pages.length === 1,
     },
+    // {
+    //   divider: true,
+    //   hide: $pages.length === 1,
+    // },
+    // {
+    //   textInfo: true,
+    //   hide: $pages.length === 1,
+    //   text: `Shortcut: ${pageIndex + 1}`,
+    // },
   ];
-
-  const hideDeleteIfOnlyOnePage = (numberOfPages) => {
-    if (numberOfPages > 1) {
-      dropdownOptions = [
-        ...dropdownOptionsDefault,
-        ...dropdownOptionsDelete,
-      ];
-    } else {
-      dropdownOptions = dropdownOptionsDefault;
-    }
-  };
-
-  $: hideDeleteIfOnlyOnePage($pages.length);
 </script>
 
 <div class="page-item">
-  <div
-    class="page-item__name"
-    on:click={handlePageItemClick}
-  >
+  <div class="page-item__name" on:click={handlePageItemClick}>
     <PagesbarPageName pageName={page.name} {isActivePage} />
   </div>
   {#if editmode}
@@ -113,23 +102,15 @@
       size="20"
       style={{
         alt: true,
-        borderRadius: '50%',
+        borderRadius: "50%",
       }}
       on:click={handlePageItemOptionsClick}
     />
   {/if}
-  <div
-    class="page-item__dropdown page-item__dropdown-options"
-  >
-    <Dropdown
-      {dropdownOptions}
-      {showDropdown}
-      {setShowDropdown}
-    />
+  <div class="page-item__dropdown page-item__dropdown-options">
+    <Dropdown {dropdownOptions} {showDropdown} {setShowDropdown} />
   </div>
-  <div
-    class="page-item__dropdown page-item__dropdown-input"
-  >
+  <div class="page-item__dropdown page-item__dropdown-input">
     <Dropdown type="input" showDropdown={isRenaming}>
       <InputText
         inputType="text"
@@ -137,6 +118,7 @@
         on:change={() => renamePage()}
         on:blur={() => setIsRenaming(false)}
         handleEnterPress={() => setIsRenaming(false)}
+        autoHighlight={true}
       />
     </Dropdown>
 

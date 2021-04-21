@@ -12,6 +12,7 @@
         toggle: false,
         toggleStatus: false,
         numberPicker: false,
+        textInfo: false,
         text: "text",
         icon: "icon",
         iconColor: "black",
@@ -57,6 +58,8 @@
               text={option.text}
               noHover={true}
             />
+          {:else if option.textInfo}
+            <DropdownItem textInfo={true} text={option.text} />
           {:else}
             <DropdownItem
               on:click={() => option.function()}

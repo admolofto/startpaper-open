@@ -1,16 +1,21 @@
 <script>
-  import Icon from '../Icon.svelte';
+  import { onMount } from "svelte";
+
+  import Icon from "../Icon.svelte";
 
   export let error = false,
-    inputType = 'text',
-    value = '',
+    inputType = "text",
+    value = "",
     maxlength = -1,
+    autoHighlight = false,
     handleEnterPress = () => {};
 
-  let type = 'text';
+  let type = "text";
 
-  $: if (inputType === 'password') {
-    type = 'password';
+  let inputElement;
+
+  $: if (inputType === "password") {
+    type = "password";
   }
 
   const handleInput = (e) => {
@@ -18,24 +23,29 @@
   };
 
   const handleShowHideClick = () => {
-    console.log('run');
-    type === 'password'
-      ? (type = 'text')
-      : (type = 'password');
+    console.log("run");
+    type === "password" ? (type = "text") : (type = "password");
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
       handleEnterPress();
     }
   };
+
+  onMount(() => {
+    if (autoHighlight) {
+      inputElement.select();
+    }
+  });
 </script>
 
 <div class="text-input">
   <input
     class="text-input__input"
-    class:password={inputType === 'password'}
+    bind:this={inputElement}
+    class:password={inputType === "password"}
     class:error
     {type}
     {value}
@@ -46,13 +56,11 @@
     on:change
     autofocus
   />
-  {#if inputType === 'password'}
+  {#if inputType === "password"}
     <div class="text-input__show-button">
       <button on:click={handleShowHideClick}>
         <Icon
-          icon={type === 'password'
-            ? 'open-eye'
-            : 'closed-eye'}
+          icon={type === "password" ? "open-eye" : "closed-eye"}
           size="20"
         />
       </button>

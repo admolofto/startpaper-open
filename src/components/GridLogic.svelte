@@ -83,6 +83,18 @@
     flipCard(flippedCardId);
   };
 
+  const handleEnterPress = (e) => {
+    if (e.code === "Enter") {
+      flipCard(flippedCardId);
+    }
+  };
+
+  $: if (flippedCardId !== "") {
+    document.addEventListener("keydown", handleEnterPress);
+  } else {
+    document.removeEventListener("keydown", handleEnterPress);
+  }
+
   onMount(async () => {
     if ($columns.dynamic) {
       let resObs = new ResizeObserver((e) => {
