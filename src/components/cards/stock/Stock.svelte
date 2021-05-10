@@ -11,11 +11,11 @@
 
   $: console.log(logo);
 
-  // let apiToken = 'Tsk_9ce02047bcac4f55bb42cdf036066e0a';
-  // let baseURL = 'https://sandbox.iexapis.com/stable/';
+  let apiToken = 'Tsk_9ce02047bcac4f55bb42cdf036066e0a';
+  let baseURL = 'https://sandbox.iexapis.com/stable/';
 
-  let apiToken = 'pk_c65a697e7c4d405a809fa83a6f356a4c';
-  let baseURL = 'https://cloud.iexapis.com/stable/';
+  // let apiToken = 'pk_c65a697e7c4d405a809fa83a6f356a4c';
+  // let baseURL = 'https://cloud.iexapis.com/stable/';
 
   $: data = [0, 0, 0];
 
